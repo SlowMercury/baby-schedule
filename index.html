@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -25,381 +24,371 @@ var e = React.createElement;
 var useState = React.useState;
 
 var SIMPLE = {
-regular: {
-blocks: [
-{ time: “23:00\u201301:00”, colors: [“dad”,“mom_sleep”], icon: “\ud83d\udc76\ud83d\ude34”, action: “\u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c. \u041c\u0430\u043c\u0430 \u0441\u043f\u0438\u0442.” },
-{ time: “01:00”, colors: [“dad”], icon: “\ud83c\udf7c”, action: “\u041f\u0430\u043f\u0430 \u0434\u0430\u0451\u0442 \u0441\u043c\u0435\u0441\u044c \u2014 50\u201360 \u043c\u043b”, formula: true },
-{ time: “01:30\u201303:00”, colors: [“dad_sleep”,“mom_sleep”], icon: “\ud83d\ude34\ud83d\ude34”, action: “\u0412\u0441\u0435 \u0441\u043f\u044f\u0442” },
-{ time: “03:00\u201308:30”, colors: [“mom”,“mom_sleep”], icon: “\ud83e\udd31\ud83d\udca4”, action: “\u041c\u0430\u043c\u0430 \u043a\u043e\u0440\u043c\u0438\u0442 \u0433\u0440\u0443\u0434\u044c\u044e + \u0434\u0440\u0435\u043c\u043b\u0435\u0442 \u043c\u0435\u0436\u0434\u0443 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f\u043c\u0438” },
-{ time: “08:30\u201309:15”, colors: [“dad”,“mom_self”], icon: “\ud83d\udebf”, action: “\u041f\u0430\u043f\u0430 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430. \u041c\u0430\u043c\u0430: \u0434\u0443\u0448 + \u0437\u0430\u0432\u0442\u0440\u0430\u043a” },
-{ time: “09:15\u201313:00”, colors: [“mom”,“dad_work”], icon: “\ud83e\udd31\ud83d\udcbb”, action: “\u041c\u0430\u043c\u0430 \u043a\u043e\u0440\u043c\u0438\u0442 \u043f\u043e \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044e. \u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442.” },
-{ time: “13:00\u201313:30”, colors: [“dad”,“mom_self”], icon: “\ud83c\udf7d\ufe0f”, action: “\u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c. \u041c\u0430\u043c\u0430 \u043e\u0431\u0435\u0434\u0430\u0435\u0442.” },
-{ time: “13:30\u201315:00”, colors: [“dad”,“mom_sleep”], icon: “\ud83d\ude34”, action: “\u041c\u0430\u043c\u0438\u043d \u0434\u043d\u0435\u0432\u043d\u043e\u0439 \u0441\u043e\u043d! \u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c.” },
-{ time: “15:00\u201318:00”, colors: [“mom”,“dad_work”], icon: “\ud83e\udd31\ud83d\udcbb”, action: “\u041c\u0430\u043c\u0430 \u043a\u043e\u0440\u043c\u0438\u0442. \u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442.” },
-{ time: “18:00\u201319:00”, colors: [“dad_self”,“mom_self”], icon: “\ud83c\udf7d\ufe0f”, action: “\u0423\u0436\u0438\u043d \u043f\u043e \u043e\u0447\u0435\u0440\u0435\u0434\u0438” },
-{ time: “19:00\u201322:30”, colors: [“mom”,“dad”], icon: “\ud83e\udd31”, action: “\u041a\u043b\u0430\u0441\u0442\u0435\u0440\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435. \u041f\u0430\u043f\u0430 \u043f\u043e\u043c\u043e\u0433\u0430\u0435\u0442.” },
-{ time: “22:30\u201323:00”, colors: [“mom_self”,“mom”], icon: “\ud83d\udebf\ud83e\udd31”, action: “\u041c\u0430\u043c\u0430: \u0434\u0443\u0448 \u2192 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 + \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435” },
-],
-sleep: { mom: “8,5\u20139 \u0447”, dad: “7 \u0447” }
-},
-grandma: {
-blocks: [
-{ time: “23:00\u201301:00”, colors: [“dad”,“mom_sleep”], icon: “\ud83d\udc76\ud83d\ude34”, action: “\u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c. \u041c\u0430\u043c\u0430 \u0441\u043f\u0438\u0442.” },
-{ time: “01:00”, colors: [“dad”], icon: “\ud83c\udf7c”, action: “\u041f\u0430\u043f\u0430 \u0434\u0430\u0451\u0442 \u0441\u043c\u0435\u0441\u044c \u2014 50\u201360 \u043c\u043b”, formula: true },
-{ time: “01:30\u201303:00”, colors: [“dad_sleep”,“mom_sleep”], icon: “\ud83d\ude34\ud83d\ude34”, action: “\u0412\u0441\u0435 \u0441\u043f\u044f\u0442” },
-{ time: “03:00\u201308:30”, colors: [“mom”,“mom_sleep”], icon: “\ud83e\udd31\ud83d\udca4”, action: “\u041c\u0430\u043c\u0430 \u043a\u043e\u0440\u043c\u0438\u0442 \u0433\u0440\u0443\u0434\u044c\u044e + \u0434\u0440\u0435\u043c\u043b\u0435\u0442” },
-{ time: “08:30\u201309:15”, colors: [“dad”,“mom_self”], icon: “\ud83d\udebf”, action: “\u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c \u2192 \u043f\u0435\u0440\u0435\u0434\u0430\u0451\u0442 \u0431\u0430\u0431\u0443\u0448\u043a\u0435. \u041c\u0430\u043c\u0430: \u0434\u0443\u0448 + \u0437\u0430\u0432\u0442\u0440\u0430\u043a.” },
-{ time: “09:15\u201313:00”, colors: [“grandma”,“mom”,“dad_work”], icon: “\ud83d\udc75\ud83e\udd31\ud83d\udcbb”, action: “\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u043f\u0440\u0438\u043d\u043e\u0441\u0438\u0442 \u043c\u0430\u043b\u044b\u0448\u0430 \u043c\u0430\u043c\u0435 \u043d\u0430 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f. \u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442.” },
-{ time: “13:00\u201313:30”, colors: [“grandma”,“mom_self”], icon: “\ud83c\udf7d\ufe0f”, action: “\u041c\u0430\u043b\u044b\u0448 \u0443 \u0431\u0430\u0431\u0443\u0448\u043a\u0438. \u041c\u0430\u043c\u0430 \u043e\u0431\u0435\u0434\u0430\u0435\u0442.” },
-{ time: “13:30\u201316:00”, colors: [“grandma”,“mom_sleep”], icon: “\ud83d\ude34”, action: “\u041c\u0430\u043c\u0438\u043d \u0414\u041e\u041b\u0413\u0418\u0419 \u0441\u043e\u043d \u2014 2,5 \u0447! \u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u0431\u0443\u0434\u0438\u0442 1\u00d7 \u043d\u0430 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435.” },
-{ time: “16:00\u201317:00”, colors: [“mom”,“grandma”], icon: “\ud83e\udd31\ud83d\udc75”, action: “\u041c\u0430\u043c\u0430 \u043a\u043e\u0440\u043c\u0438\u0442. \u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u0443\u0445\u043e\u0434\u0438\u0442 ~17:00.” },
-{ time: “17:00\u201318:00”, colors: [“dad”,“mom_self”], icon: “\u2615”, action: “\u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c. \u041c\u0430\u043c\u0430 \u043e\u0442\u0434\u044b\u0445\u0430\u0435\u0442.” },
-{ time: “18:00\u201319:00”, colors: [“dad_self”,“mom_self”], icon: “\ud83c\udf7d\ufe0f”, action: “\u0423\u0436\u0438\u043d \u043f\u043e \u043e\u0447\u0435\u0440\u0435\u0434\u0438” },
-{ time: “19:00\u201322:30”, colors: [“mom”,“dad”], icon: “\ud83e\udd31”, action: “\u041a\u043b\u0430\u0441\u0442\u0435\u0440\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435. \u041f\u0430\u043f\u0430 \u043f\u043e\u043c\u043e\u0433\u0430\u0435\u0442.” },
-{ time: “22:30\u201323:00”, colors: [“mom_self”,“mom”], icon: “\ud83d\udebf\ud83e\udd31”, action: “\u041c\u0430\u043c\u0430: \u0434\u0443\u0448 \u2192 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 + \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435” },
-],
-sleep: { mom: “9,5\u201310 \u0447”, dad: “7 \u0447” }
-}
+  regular: {
+    blocks: [
+      { time: "23:00\u201301:00", colors: ["dad","mom_sleep"], icon: "\ud83d\udc76\ud83d\ude34", action: "\u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c. \u041c\u0430\u043c\u0430 \u0441\u043f\u0438\u0442." },
+      { time: "01:00", colors: ["dad"], icon: "\ud83c\udf7c", action: "\u041f\u0430\u043f\u0430 \u0434\u0430\u0451\u0442 \u0441\u043c\u0435\u0441\u044c \u2014 50\u201360 \u043c\u043b", formula: true },
+      { time: "01:30\u201303:00", colors: ["dad_sleep","mom_sleep"], icon: "\ud83d\ude34\ud83d\ude34", action: "\u0412\u0441\u0435 \u0441\u043f\u044f\u0442" },
+      { time: "03:00\u201308:30", colors: ["mom","mom_sleep"], icon: "\ud83e\udd31\ud83d\udca4", action: "\u041c\u0430\u043c\u0430 \u043a\u043e\u0440\u043c\u0438\u0442 \u0433\u0440\u0443\u0434\u044c\u044e + \u0434\u0440\u0435\u043c\u043b\u0435\u0442 \u043c\u0435\u0436\u0434\u0443 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f\u043c\u0438" },
+      { time: "08:30\u201309:15", colors: ["dad","mom_self"], icon: "\ud83d\udebf", action: "\u041f\u0430\u043f\u0430 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430. \u041c\u0430\u043c\u0430: \u0434\u0443\u0448 + \u0437\u0430\u0432\u0442\u0440\u0430\u043a" },
+      { time: "09:15\u201313:00", colors: ["mom","dad_work"], icon: "\ud83e\udd31\ud83d\udcbb", action: "\u041c\u0430\u043c\u0430 \u043a\u043e\u0440\u043c\u0438\u0442 \u043f\u043e \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044e. \u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442." },
+      { time: "13:00\u201313:30", colors: ["dad","mom_self"], icon: "\ud83c\udf7d\ufe0f", action: "\u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c. \u041c\u0430\u043c\u0430 \u043e\u0431\u0435\u0434\u0430\u0435\u0442." },
+      { time: "13:30\u201315:00", colors: ["dad","mom_sleep"], icon: "\ud83d\ude34", action: "\u041c\u0430\u043c\u0438\u043d \u0434\u043d\u0435\u0432\u043d\u043e\u0439 \u0441\u043e\u043d! \u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c." },
+      { time: "15:00\u201318:00", colors: ["mom","dad_work"], icon: "\ud83e\udd31\ud83d\udcbb", action: "\u041c\u0430\u043c\u0430 \u043a\u043e\u0440\u043c\u0438\u0442. \u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442." },
+      { time: "18:00\u201319:00", colors: ["dad_self","mom_self"], icon: "\ud83c\udf7d\ufe0f", action: "\u0423\u0436\u0438\u043d \u043f\u043e \u043e\u0447\u0435\u0440\u0435\u0434\u0438" },
+      { time: "19:00\u201322:30", colors: ["mom","dad"], icon: "\ud83e\udd31", action: "\u041a\u043b\u0430\u0441\u0442\u0435\u0440\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435. \u041f\u0430\u043f\u0430 \u043f\u043e\u043c\u043e\u0433\u0430\u0435\u0442." },
+      { time: "22:30\u201323:00", colors: ["mom_self","mom"], icon: "\ud83d\udebf\ud83e\udd31", action: "\u041c\u0430\u043c\u0430: \u0434\u0443\u0448 \u2192 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 + \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435" },
+    ],
+    sleep: { mom: "8,5\u20139 \u0447", dad: "7 \u0447" }
+  },
+  grandma: {
+    blocks: [
+      { time: "23:00\u201301:00", colors: ["dad","mom_sleep"], icon: "\ud83d\udc76\ud83d\ude34", action: "\u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c. \u041c\u0430\u043c\u0430 \u0441\u043f\u0438\u0442." },
+      { time: "01:00", colors: ["dad"], icon: "\ud83c\udf7c", action: "\u041f\u0430\u043f\u0430 \u0434\u0430\u0451\u0442 \u0441\u043c\u0435\u0441\u044c \u2014 50\u201360 \u043c\u043b", formula: true },
+      { time: "01:30\u201303:00", colors: ["dad_sleep","mom_sleep"], icon: "\ud83d\ude34\ud83d\ude34", action: "\u0412\u0441\u0435 \u0441\u043f\u044f\u0442" },
+      { time: "03:00\u201308:30", colors: ["mom","mom_sleep"], icon: "\ud83e\udd31\ud83d\udca4", action: "\u041c\u0430\u043c\u0430 \u043a\u043e\u0440\u043c\u0438\u0442 \u0433\u0440\u0443\u0434\u044c\u044e + \u0434\u0440\u0435\u043c\u043b\u0435\u0442" },
+      { time: "08:30\u201309:15", colors: ["dad","mom_self"], icon: "\ud83d\udebf", action: "\u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c \u2192 \u043f\u0435\u0440\u0435\u0434\u0430\u0451\u0442 \u0431\u0430\u0431\u0443\u0448\u043a\u0435. \u041c\u0430\u043c\u0430: \u0434\u0443\u0448 + \u0437\u0430\u0432\u0442\u0440\u0430\u043a." },
+      { time: "09:15\u201313:00", colors: ["grandma","mom","dad_work"], icon: "\ud83d\udc75\ud83e\udd31\ud83d\udcbb", action: "\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u043f\u0440\u0438\u043d\u043e\u0441\u0438\u0442 \u043c\u0430\u043b\u044b\u0448\u0430 \u043c\u0430\u043c\u0435 \u043d\u0430 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f. \u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442." },
+      { time: "13:00\u201313:30", colors: ["grandma","mom_self"], icon: "\ud83c\udf7d\ufe0f", action: "\u041c\u0430\u043b\u044b\u0448 \u0443 \u0431\u0430\u0431\u0443\u0448\u043a\u0438. \u041c\u0430\u043c\u0430 \u043e\u0431\u0435\u0434\u0430\u0435\u0442." },
+      { time: "13:30\u201316:00", colors: ["grandma","mom_sleep"], icon: "\ud83d\ude34", action: "\u041c\u0430\u043c\u0438\u043d \u0414\u041e\u041b\u0413\u0418\u0419 \u0441\u043e\u043d \u2014 2,5 \u0447! \u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u0431\u0443\u0434\u0438\u0442 1\u00d7 \u043d\u0430 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435." },
+      { time: "16:00\u201317:00", colors: ["mom","grandma"], icon: "\ud83e\udd31\ud83d\udc75", action: "\u041c\u0430\u043c\u0430 \u043a\u043e\u0440\u043c\u0438\u0442. \u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u0443\u0445\u043e\u0434\u0438\u0442 ~17:00." },
+      { time: "17:00\u201318:00", colors: ["dad","mom_self"], icon: "\u2615", action: "\u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c. \u041c\u0430\u043c\u0430 \u043e\u0442\u0434\u044b\u0445\u0430\u0435\u0442." },
+      { time: "18:00\u201319:00", colors: ["dad_self","mom_self"], icon: "\ud83c\udf7d\ufe0f", action: "\u0423\u0436\u0438\u043d \u043f\u043e \u043e\u0447\u0435\u0440\u0435\u0434\u0438" },
+      { time: "19:00\u201322:30", colors: ["mom","dad"], icon: "\ud83e\udd31", action: "\u041a\u043b\u0430\u0441\u0442\u0435\u0440\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435. \u041f\u0430\u043f\u0430 \u043f\u043e\u043c\u043e\u0433\u0430\u0435\u0442." },
+      { time: "22:30\u201323:00", colors: ["mom_self","mom"], icon: "\ud83d\udebf\ud83e\udd31", action: "\u041c\u0430\u043c\u0430: \u0434\u0443\u0448 \u2192 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 + \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435" },
+    ],
+    sleep: { mom: "9,5\u201310 \u0447", dad: "7 \u0447" }
+  }
 };
 
 var DETAILED = {
-regular: {
-blocks: [
-{ time: “23:00”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e + \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435”, note: “\u0421\u0446\u0435\u0436\u0435\u043d\u043d\u043e\u0435 \u043c\u043e\u043b\u043e\u043a\u043e \u0443\u0431\u0440\u0430\u0442\u044c \u0432 \u0445\u043e\u043b\u043e\u0434\u0438\u043b\u044c\u043d\u0438\u043a \u043d\u0430 \u0437\u0430\u0432\u0442\u0440\u0430” },
-{ time: “23:15”, who: “mom_sleep”, icon: “\ud83d\ude34”, action: “\u041c\u0430\u043c\u0430 \u0441\u043f\u0438\u0442 (\u043d\u0430\u0447\u0430\u043b\u043e \u0431\u043b\u043e\u043a\u0430 1)”, note: “\u0411\u0435\u0440\u0443\u0448\u0438, \u043f\u043e \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0438 \u2014 \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u0430\u044f \u043a\u043e\u043c\u043d\u0430\u0442\u0430” },
-{ time: “23:15”, who: “dad”, icon: “\ud83d\udc76”, action: “\u041f\u0430\u043f\u0430 \u0434\u0435\u0440\u0436\u0438\u0442 / \u0443\u043a\u0430\u0447\u0438\u0432\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430”, note: “\u041a\u043e\u0436\u0430 \u043a \u043a\u043e\u0436\u0435, \u043f\u0435\u043b\u0435\u043d\u0430\u043d\u0438\u0435, \u043f\u043e\u043a\u0430\u0447\u0438\u0432\u0430\u043d\u0438\u0435” },
-{ time: “01:00”, who: “dad”, icon: “\ud83c\udf7c”, action: “\u041f\u0430\u043f\u0430 \u0434\u0430\u0451\u0442 \u0421\u041c\u0415\u0421\u042c \u2014 50\u201360 \u043c\u043b”, note: “\u041c\u0435\u0434\u043b\u0435\u043d\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435, \u0441\u043e\u0441\u043a\u0430 \u00ab0\u00bb, \u0432\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435. \u0425\u043e\u0440\u043e\u0448\u043e \u0441\u0440\u044b\u0433\u043d\u0443\u0442\u044c.” },
-{ time: “01:30”, who: “dad_sleep”, icon: “\ud83d\ude34”, action: “\u041f\u0430\u043f\u0430 \u043b\u043e\u0436\u0438\u0442\u0441\u044f \u0441\u043f\u0430\u0442\u044c”, note: “\u041f\u043e\u0441\u043b\u0435 \u0441\u043c\u0435\u0441\u0438 \u043c\u0430\u043b\u044b\u0448 \u043e\u0431\u044b\u0447\u043d\u043e \u0441\u043f\u0438\u0442 1,5\u20132 \u0447\u0430\u0441\u0430” },
-{ time: “01:30”, who: “mom_sleep”, icon: “\ud83d\ude34”, action: “\u041c\u0430\u043c\u0430 \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0430\u0435\u0442 \u0441\u043f\u0430\u0442\u044c”, note: “~4 \u0447\u0430\u0441\u0430 \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e \u2014 \u0441\u0430\u043c\u044b\u0439 \u0433\u043b\u0443\u0431\u043e\u043a\u0438\u0439 \u043e\u0442\u0434\u044b\u0445” },
-{ time: “03:00”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041c\u0430\u043c\u0430 \u043f\u0440\u043e\u0441\u044b\u043f\u0430\u0435\u0442\u0441\u044f \u2192 \u043a\u043e\u0440\u043c\u0438\u0442 \u0433\u0440\u0443\u0434\u044c\u044e”, note: “\u041f\u0438\u043a \u043f\u0440\u043e\u043b\u0430\u043a\u0442\u0438\u043d\u0430 \u2014 \u044d\u0442\u043e \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u0449\u0438\u0449\u0430\u0435\u0442 \u0432\u044b\u0440\u0430\u0431\u043e\u0442\u043a\u0443 \u043c\u043e\u043b\u043e\u043a\u0430” },
-{ time: “03:30”, who: “mom_sleep”, icon: “\ud83d\udca4”, action: “\u041c\u0430\u043c\u0430 \u0434\u0440\u0435\u043c\u043b\u0435\u0442 \u0440\u044f\u0434\u043e\u043c \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c”, note: “\u041b\u0451\u0433\u043a\u0438\u0439 \u0441\u043e\u043d \u043c\u0435\u0436\u0434\u0443 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f\u043c\u0438” },
-{ time: “04:30”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e”, note: “” },
-{ time: “05:00”, who: “mom_sleep”, icon: “\ud83d\udca4”, action: “\u041c\u0430\u043c\u0430 \u0434\u0440\u0435\u043c\u043b\u0435\u0442”, note: “” },
-{ time: “06:00”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e”, note: “” },
-{ time: “06:30”, who: “mom_sleep”, icon: “\ud83d\udca4”, action: “\u041c\u0430\u043c\u0430 \u0434\u0440\u0435\u043c\u043b\u0435\u0442”, note: “” },
-{ time: “07:30”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e”, note: “” },
-{ time: “08:30”, who: “dad”, icon: “\ud83e\uddd1”, action: “\u041f\u0430\u043f\u0430 \u0432\u0441\u0442\u0430\u0451\u0442 \u2192 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430”, note: “\u041f\u043e\u0434\u0433\u0443\u0437\u043d\u0438\u043a, \u043f\u043e\u0434\u0435\u0440\u0436\u0430\u0442\u044c, \u043f\u043e\u0445\u043e\u0434\u0438\u0442\u044c” },
-{ time: “08:30”, who: “mom_self”, icon: “\ud83d\udebf”, action: “\u041c\u0430\u043c\u0430: \u0434\u0443\u0448 + \u043d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u044b\u0439 \u0437\u0430\u0432\u0442\u0440\u0430\u043a”, note: “45 \u043c\u0438\u043d\u0443\u0442 \u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e \u0431\u0435\u0437 \u0440\u0435\u0431\u0451\u043d\u043a\u0430. \u041d\u0435 \u043e\u0431\u0441\u0443\u0436\u0434\u0430\u0435\u0442\u0441\u044f.” },
-{ time: “09:00”, who: “dad”, icon: “\ud83e\uddd1”, action: “\u041f\u0430\u043f\u0430 \u0434\u0435\u0440\u0436\u0438\u0442 \u043c\u0430\u043b\u044b\u0448\u0430 / \u0433\u043e\u0442\u043e\u0432\u0438\u0442\u0441\u044f \u043a \u0440\u0430\u0431\u043e\u0442\u0435”, note: “” },
-{ time: “09:15”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e \u043f\u043e \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044e”, note: “” },
-{ time: “09:15”, who: “dad_work”, icon: “\ud83d\udcbb”, action: “\u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u0438\u0437 \u0434\u043e\u043c\u0430”, note: “\u041f\u043e\u043c\u043e\u0447\u044c \u0441 \u043f\u043e\u0434\u0433\u0443\u0437\u043d\u0438\u043a\u0430\u043c\u0438/\u0441\u0440\u044b\u0433\u0438\u0432\u0430\u043d\u0438\u0435\u043c \u043c\u0435\u0436\u0434\u0443 \u0437\u0430\u0434\u0430\u0447\u0430\u043c\u0438” },
-{ time: “10:00”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u043f\u043e \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044e (~\u043a\u0430\u0436\u0434\u044b\u0435 1\u20131,5 \u0447)”, note: “\u041c\u0430\u043c\u0430 \u043e\u0442\u0434\u044b\u0445\u0430\u0435\u0442 \u043c\u0435\u0436\u0434\u0443 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f\u043c\u0438, \u043f\u0435\u0440\u0435\u043a\u0443\u0441\u044b\u0432\u0430\u0435\u0442, \u043f\u044c\u0451\u0442 \u0432\u043e\u0434\u0443” },
-{ time: “13:00”, who: “dad”, icon: “\ud83e\uddd1”, action: “\u041f\u0430\u043f\u0430: \u043e\u0431\u0435\u0434\u0435\u043d\u043d\u044b\u0439 \u043f\u0435\u0440\u0435\u0440\u044b\u0432 \u2192 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430”, note: “” },
-{ time: “13:00”, who: “mom_self”, icon: “\ud83c\udf7d\ufe0f”, action: “\u041c\u0430\u043c\u0430 \u043d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u043e \u043e\u0431\u0435\u0434\u0430\u0435\u0442”, note: “\u041a\u0430\u043b\u043e\u0440\u0438\u0439\u043d\u0430\u044f \u0435\u0434\u0430. \u0415\u0439 \u043d\u0443\u0436\u043d\u043e +500 \u043a\u043a\u0430\u043b/\u0434\u0435\u043d\u044c” },
-{ time: “13:30”, who: “mom_sleep”, icon: “\ud83d\ude34”, action: “\u041c\u0430\u043c\u0430: \u0414\u041d\u0415\u0412\u041d\u041e\u0419 \u0421\u041e\u041d \u2014 1,5 \u0447\u0430\u0441\u0430”, note: “\u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c. \u0420\u0430\u0431\u043e\u0442\u0430 \u043f\u043e\u0434\u043e\u0436\u0434\u0451\u0442 90 \u043c\u0438\u043d\u0443\u0442.” },
-{ time: “13:30”, who: “dad”, icon: “\ud83d\udc76”, action: “\u041f\u0430\u043f\u0430: \u0434\u0435\u0436\u0443\u0440\u0441\u0442\u0432\u043e \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c (\u043e\u0431\u0435\u0434 + \u043f\u0435\u0440\u0435\u0440\u044b\u0432)”, note: “\u041a\u0430\u0447\u0430\u0442\u044c, \u0445\u043e\u0434\u0438\u0442\u044c, \u043a\u043e\u0436\u0430 \u043a \u043a\u043e\u0436\u0435, \u0441\u043e\u0441\u043a\u0430/\u043c\u0438\u0437\u0438\u043d\u0435\u0446” },
-{ time: “15:00”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041c\u0430\u043c\u0430 \u043f\u0440\u043e\u0441\u044b\u043f\u0430\u0435\u0442\u0441\u044f \u2192 \u043a\u043e\u0440\u043c\u0438\u0442 \u0433\u0440\u0443\u0434\u044c\u044e”, note: “” },
-{ time: “15:00”, who: “dad_work”, icon: “\ud83d\udcbb”, action: “\u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u0438\u0437 \u0434\u043e\u043c\u0430”, note: “” },
-{ time: “15:30”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u043f\u043e \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044e”, note: “” },
-{ time: “18:00”, who: “dad”, icon: “\ud83e\uddd1”, action: “\u041f\u0430\u043f\u0430 \u0437\u0430\u043a\u043e\u043d\u0447\u0438\u043b \u0440\u0430\u0431\u043e\u0442\u0443 \u2192 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430”, note: “” },
-{ time: “18:00”, who: “mom_self”, icon: “\ud83c\udf7d\ufe0f”, action: “\u041c\u0430\u043c\u0430 \u0443\u0436\u0438\u043d\u0430\u0435\u0442”, note: “” },
-{ time: “18:30”, who: “dad_self”, icon: “\ud83c\udf7d\ufe0f”, action: “\u041f\u0430\u043f\u0430 \u0443\u0436\u0438\u043d\u0430\u0435\u0442”, note: “\u041c\u0430\u043c\u0430 \u0434\u0435\u0440\u0436\u0438\u0442 \u043c\u0430\u043b\u044b\u0448\u0430” },
-{ time: “19:00”, who: “mom”, icon: “\ud83e\udd31”, action: “\u0412\u0435\u0447\u0435\u0440\u043d\u0435\u0435 \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435”, note: “\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f \u043a\u0430\u0436\u0434\u044b\u0435 30\u201360 \u043c\u0438\u043d. \u042d\u0442\u043e \u043d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u043e \u0438 \u0441\u0442\u0440\u043e\u0438\u0442 \u0437\u0430\u043f\u0430\u0441 \u043c\u043e\u043b\u043e\u043a\u0430.” },
-{ time: “19:00”, who: “dad”, icon: “\ud83e\uddd1”, action: “\u041f\u0430\u043f\u0430: \u043f\u043e\u0434\u0433\u0443\u0437\u043d\u0438\u043a\u0438, \u0441\u0440\u044b\u0433\u0438\u0432\u0430\u043d\u0438\u044f, \u0432\u043e\u0434\u0430 \u0438 \u043f\u0435\u0440\u0435\u043a\u0443\u0441\u044b \u0434\u043b\u044f \u043c\u0430\u043c\u044b”, note: “\u041f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0442\u044c \u043c\u0430\u043c\u0443 \u0435\u0434\u043e\u0439 \u0438 \u0432\u043e\u0434\u043e\u0439 \u0432\u043e \u0432\u0440\u0435\u043c\u044f \u043c\u0430\u0440\u0430\u0444\u043e\u043d\u0430” },
-{ time: “22:30”, who: “mom_self”, icon: “\ud83d\udebf”, action: “\u041c\u0430\u043c\u0430: \u0431\u044b\u0441\u0442\u0440\u044b\u0439 \u0434\u0443\u0448”, note: “” },
-{ time: “22:45”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 + \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435”, note: “\u0426\u0438\u043a\u043b \u043d\u0430\u0447\u0438\u043d\u0430\u0435\u0442\u0441\u044f \u0437\u0430\u043d\u043e\u0432\u043e” },
-],
-sleepTotals: {
-mom: { solid: “4 \u0447 (23:15\u201303:00)”, dozing: “3\u20133,5 \u0447 (\u043c\u0435\u0436\u0434\u0443 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f\u043c\u0438)”, nap: “1,5 \u0447 (\u0434\u043d\u0435\u0432\u043d\u043e\u0439 \u0441\u043e\u043d)”, total: “8,5\u20139 \u0447” },
-dad: { solid: “7 \u0447 (01:30\u201308:30)”, total: “7 \u0447” },
-}
-},
-grandma: {
-blocks: [
-{ time: “23:00”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 + \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435”, note: “\u0421\u0446\u0435\u0436\u0435\u043d\u043d\u043e\u0435 \u043c\u043e\u043b\u043e\u043a\u043e \u0443\u0431\u0440\u0430\u0442\u044c \u0432 \u0445\u043e\u043b\u043e\u0434\u0438\u043b\u044c\u043d\u0438\u043a” },
-{ time: “23:15”, who: “mom_sleep”, icon: “\ud83d\ude34”, action: “\u041c\u0430\u043c\u0430 \u0441\u043f\u0438\u0442 (\u043d\u0430\u0447\u0430\u043b\u043e \u0431\u043b\u043e\u043a\u0430 1)”, note: “” },
-{ time: “23:15”, who: “dad”, icon: “\ud83d\udc76”, action: “\u041f\u0430\u043f\u0430 \u0434\u0435\u0440\u0436\u0438\u0442 / \u0443\u043a\u0430\u0447\u0438\u0432\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430”, note: “” },
-{ time: “01:00”, who: “dad”, icon: “\ud83c\udf7c”, action: “\u041f\u0430\u043f\u0430 \u0434\u0430\u0451\u0442 \u0421\u041c\u0415\u0421\u042c \u2014 50\u201360 \u043c\u043b”, note: “\u0415\u0434\u0438\u043d\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0441\u043c\u0435\u0441\u044c\u044e \u0437\u0430 \u0434\u0435\u043d\u044c” },
-{ time: “01:30”, who: “dad_sleep”, icon: “\ud83d\ude34”, action: “\u041f\u0430\u043f\u0430 \u043b\u043e\u0436\u0438\u0442\u0441\u044f \u0441\u043f\u0430\u0442\u044c”, note: “” },
-{ time: “01:30”, who: “mom_sleep”, icon: “\ud83d\ude34”, action: “\u041c\u0430\u043c\u0430 \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0430\u0435\u0442 \u0441\u043f\u0430\u0442\u044c”, note: “” },
-{ time: “03:00”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041c\u0430\u043c\u0430 \u043f\u0440\u043e\u0441\u044b\u043f\u0430\u0435\u0442\u0441\u044f \u2192 \u043a\u043e\u0440\u043c\u0438\u0442 \u0433\u0440\u0443\u0434\u044c\u044e”, note: “\u041e\u043a\u043d\u043e \u043f\u0438\u043a\u0430 \u043f\u0440\u043e\u043b\u0430\u043a\u0442\u0438\u043d\u0430” },
-{ time: “03:30”, who: “mom_sleep”, icon: “\ud83d\udca4”, action: “\u041c\u0430\u043c\u0430 \u0434\u0440\u0435\u043c\u043b\u0435\u0442”, note: “” },
-{ time: “04:30”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e”, note: “” },
-{ time: “05:00”, who: “mom_sleep”, icon: “\ud83d\udca4”, action: “\u041c\u0430\u043c\u0430 \u0434\u0440\u0435\u043c\u043b\u0435\u0442”, note: “” },
-{ time: “06:00”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e”, note: “” },
-{ time: “06:30”, who: “mom_sleep”, icon: “\ud83d\udca4”, action: “\u041c\u0430\u043c\u0430 \u0434\u0440\u0435\u043c\u043b\u0435\u0442”, note: “” },
-{ time: “07:30”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e”, note: “” },
-{ time: “08:30”, who: “dad”, icon: “\ud83e\uddd1”, action: “\u041f\u0430\u043f\u0430 \u0432\u0441\u0442\u0430\u0451\u0442 \u2192 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430”, note: “” },
-{ time: “08:30”, who: “mom_self”, icon: “\ud83d\udebf”, action: “\u041c\u0430\u043c\u0430: \u0434\u0443\u0448 + \u0437\u0430\u0432\u0442\u0440\u0430\u043a”, note: “45 \u043c\u0438\u043d\u0443\u0442 \u0431\u0435\u0437 \u0440\u0435\u0431\u0451\u043d\u043a\u0430” },
-{ time: “09:00”, who: “grandma”, icon: “\ud83d\udc75”, action: “\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u043f\u0440\u0438\u0445\u043e\u0434\u0438\u0442 \u2192 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430”, note: “\u041f\u0430\u043f\u0430 \u043f\u0435\u0440\u0435\u0434\u0430\u0451\u0442 \u0434\u0435\u043b\u0430 \u0431\u0430\u0431\u0443\u0448\u043a\u0435, \u043d\u0430\u0447\u0438\u043d\u0430\u0435\u0442 \u0440\u0430\u0431\u043e\u0442\u0443” },
-{ time: “09:15”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e”, note: “” },
-{ time: “09:30”, who: “grandma”, icon: “\ud83d\udc75”, action: “\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c \u043c\u0435\u0436\u0434\u0443 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f\u043c\u0438”, note: “\u041f\u043e\u0434\u0433\u0443\u0437\u043d\u0438\u043a\u0438, \u0443\u043a\u0430\u0447\u0438\u0432\u0430\u043d\u0438\u0435 \u2014 \u043f\u0440\u0438\u043d\u043e\u0441\u0438\u0442 \u043c\u0430\u043b\u044b\u0448\u0430 \u043c\u0430\u043c\u0435 \u043d\u0430 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435” },
-{ time: “09:30”, who: “dad_work”, icon: “\ud83d\udcbb”, action: “\u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 (\u0431\u0435\u0437 \u043f\u0435\u0440\u0435\u0440\u044b\u0432\u043e\u0432)”, note: “\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u0431\u0435\u0440\u0451\u0442 \u043d\u0430 \u0441\u0435\u0431\u044f \u043c\u0430\u043b\u044b\u0448\u0430” },
-{ time: “09:30”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u043f\u043e \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044e (~\u043a\u0430\u0436\u0434\u044b\u0435 1,5 \u0447)”, note: “\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u043f\u0440\u0438\u043d\u043e\u0441\u0438\u0442 \u043c\u0430\u043b\u044b\u0448\u0430, \u043c\u0430\u043c\u0430 \u0442\u043e\u043b\u044c\u043a\u043e \u043a\u043e\u0440\u043c\u0438\u0442 \u0438 \u043e\u0442\u0434\u044b\u0445\u0430\u0435\u0442” },
-{ time: “13:00”, who: “mom_self”, icon: “\ud83c\udf7d\ufe0f”, action: “\u041c\u0430\u043c\u0430 \u043e\u0431\u0435\u0434\u0430\u0435\u0442”, note: “\u041c\u0430\u043b\u044b\u0448 \u0443 \u0431\u0430\u0431\u0443\u0448\u043a\u0438” },
-{ time: “13:30”, who: “mom_sleep”, icon: “\ud83d\ude34”, action: “\u041c\u0430\u043c\u0430: \u0414\u041e\u041b\u0413\u0418\u0419 \u0421\u041e\u041d \u2014 2,5 \u0447\u0430\u0441\u0430”, note: “\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u0441\u043f\u0440\u0430\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0441\u0430\u043c\u0430, \u0431\u0443\u0434\u0438\u0442 \u043c\u0430\u043c\u0443 \u0442\u043e\u043b\u044c\u043a\u043e \u043d\u0430 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435” },
-{ time: “13:30”, who: “grandma”, icon: “\ud83d\udc75”, action: “\u0411\u0430\u0431\u0443\u0448\u043a\u0430: \u043c\u0430\u043b\u044b\u0448 + 1 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0443 \u043c\u0430\u043c\u044b ~15:00”, note: “\u0420\u0430\u0437\u0431\u0443\u0434\u0438\u0442\u044c \u043c\u0430\u043c\u0443 \u0432 ~15:00 \u043d\u0430 \u043e\u0434\u043d\u043e \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435, \u043f\u043e\u0442\u043e\u043c \u0434\u0430\u0442\u044c \u0434\u043e\u0441\u043f\u0430\u0442\u044c” },
-{ time: “13:00”, who: “dad_work”, icon: “\ud83d\udcbb”, action: “\u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 (\u0431\u0435\u0437 \u043f\u0435\u0440\u0435\u0440\u044b\u0432\u043e\u0432)”, note: “” },
-{ time: “16:00”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041c\u0430\u043c\u0430 \u0432\u0441\u0442\u0430\u043b\u0430 \u2192 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u043f\u043e \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044e”, note: “” },
-{ time: “17:00”, who: “grandma”, icon: “\ud83d\udc75”, action: “\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u0443\u0445\u043e\u0434\u0438\u0442”, note: “” },
-{ time: “17:00”, who: “dad”, icon: “\ud83e\uddd1”, action: “\u041f\u0430\u043f\u0430 \u0437\u0430\u043a\u043e\u043d\u0447\u0438\u043b \u0440\u0430\u0431\u043e\u0442\u0443 \u2192 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430”, note: “” },
-{ time: “17:00”, who: “mom_self”, icon: “\u2615”, action: “\u041c\u0430\u043c\u0430: \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f / \u043e\u0442\u0434\u044b\u0445 / \u043f\u043e\u0435\u0441\u0442\u044c”, note: “\u0427\u0430\u0441 \u043d\u0430 \u0442\u043e, \u0447\u0442\u043e\u0431\u044b \u043f\u043e\u0431\u044b\u0442\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u043e\u043c” },
-{ time: “18:00”, who: “dad_self”, icon: “\ud83c\udf7d\ufe0f”, action: “\u041f\u0430\u043f\u0430 \u0443\u0436\u0438\u043d\u0430\u0435\u0442”, note: “” },
-{ time: “18:30”, who: “mom”, icon: “\ud83e\udd31”, action: “\u0412\u0435\u0447\u0435\u0440\u043d\u0435\u0435 \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435”, note: “” },
-{ time: “18:30”, who: “dad”, icon: “\ud83e\uddd1”, action: “\u041f\u0430\u043f\u0430: \u043f\u043e\u043c\u043e\u0433\u0430\u0435\u0442 \u043c\u0430\u043c\u0435 (\u043f\u043e\u0434\u0433\u0443\u0437\u043d\u0438\u043a\u0438, \u0441\u0440\u044b\u0433\u0438\u0432\u0430\u043d\u0438\u044f, \u043f\u0435\u0440\u0435\u043a\u0443\u0441\u044b)”, note: “” },
-{ time: “22:30”, who: “mom_self”, icon: “\ud83d\udebf”, action: “\u041c\u0430\u043c\u0430: \u0431\u044b\u0441\u0442\u0440\u044b\u0439 \u0434\u0443\u0448”, note: “” },
-{ time: “22:45”, who: “mom”, icon: “\ud83e\udd31”, action: “\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 + \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435”, note: “\u0426\u0438\u043a\u043b \u043d\u0430\u0447\u0438\u043d\u0430\u0435\u0442\u0441\u044f \u0437\u0430\u043d\u043e\u0432\u043e” },
-],
-sleepTotals: {
-mom: { solid: “4 \u0447 (23:15\u201303:00)”, dozing: “3\u20133,5 \u0447”, nap: “2,5 \u0447 (\u0434\u043d\u0435\u0432\u043d\u043e\u0439!)”, total: “9,5\u201310 \u0447” },
-dad: { solid: “7 \u0447 (01:30\u201308:30)”, total: “7 \u0447” },
-}
-}
+  regular: {
+    blocks: [
+      { time: "23:00", who: "mom", icon: "\ud83e\udd31", action: "\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e + \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435", note: "\u0421\u0446\u0435\u0436\u0435\u043d\u043d\u043e\u0435 \u043c\u043e\u043b\u043e\u043a\u043e \u0443\u0431\u0440\u0430\u0442\u044c \u0432 \u0445\u043e\u043b\u043e\u0434\u0438\u043b\u044c\u043d\u0438\u043a \u043d\u0430 \u0437\u0430\u0432\u0442\u0440\u0430" },
+      { time: "23:15", who: "mom_sleep", icon: "\ud83d\ude34", action: "\u041c\u0430\u043c\u0430 \u0441\u043f\u0438\u0442 (\u043d\u0430\u0447\u0430\u043b\u043e \u0431\u043b\u043e\u043a\u0430 1)", note: "\u0411\u0435\u0440\u0443\u0448\u0438, \u043f\u043e \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u0438 \u2014 \u043e\u0442\u0434\u0435\u043b\u044c\u043d\u0430\u044f \u043a\u043e\u043c\u043d\u0430\u0442\u0430" },
+      { time: "23:15", who: "dad", icon: "\ud83d\udc76", action: "\u041f\u0430\u043f\u0430 \u0434\u0435\u0440\u0436\u0438\u0442 / \u0443\u043a\u0430\u0447\u0438\u0432\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430", note: "\u041a\u043e\u0436\u0430 \u043a \u043a\u043e\u0436\u0435, \u043f\u0435\u043b\u0435\u043d\u0430\u043d\u0438\u0435, \u043f\u043e\u043a\u0430\u0447\u0438\u0432\u0430\u043d\u0438\u0435" },
+      { time: "01:00", who: "dad", icon: "\ud83c\udf7c", action: "\u041f\u0430\u043f\u0430 \u0434\u0430\u0451\u0442 \u0421\u041c\u0415\u0421\u042c \u2014 50\u201360 \u043c\u043b", note: "\u041c\u0435\u0434\u043b\u0435\u043d\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435, \u0441\u043e\u0441\u043a\u0430 \u00ab0\u00bb, \u0432\u0435\u0440\u0442\u0438\u043a\u0430\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435. \u0425\u043e\u0440\u043e\u0448\u043e \u0441\u0440\u044b\u0433\u043d\u0443\u0442\u044c." },
+      { time: "01:30", who: "dad_sleep", icon: "\ud83d\ude34", action: "\u041f\u0430\u043f\u0430 \u043b\u043e\u0436\u0438\u0442\u0441\u044f \u0441\u043f\u0430\u0442\u044c", note: "\u041f\u043e\u0441\u043b\u0435 \u0441\u043c\u0435\u0441\u0438 \u043c\u0430\u043b\u044b\u0448 \u043e\u0431\u044b\u0447\u043d\u043e \u0441\u043f\u0438\u0442 1,5\u20132 \u0447\u0430\u0441\u0430" },
+      { time: "01:30", who: "mom_sleep", icon: "\ud83d\ude34", action: "\u041c\u0430\u043c\u0430 \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0430\u0435\u0442 \u0441\u043f\u0430\u0442\u044c", note: "~4 \u0447\u0430\u0441\u0430 \u043d\u0435\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u043e \u2014 \u0441\u0430\u043c\u044b\u0439 \u0433\u043b\u0443\u0431\u043e\u043a\u0438\u0439 \u043e\u0442\u0434\u044b\u0445" },
+      { time: "03:00", who: "mom", icon: "\ud83e\udd31", action: "\u041c\u0430\u043c\u0430 \u043f\u0440\u043e\u0441\u044b\u043f\u0430\u0435\u0442\u0441\u044f \u2192 \u043a\u043e\u0440\u043c\u0438\u0442 \u0433\u0440\u0443\u0434\u044c\u044e", note: "\u041f\u0438\u043a \u043f\u0440\u043e\u043b\u0430\u043a\u0442\u0438\u043d\u0430 \u2014 \u044d\u0442\u043e \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u0449\u0438\u0449\u0430\u0435\u0442 \u0432\u044b\u0440\u0430\u0431\u043e\u0442\u043a\u0443 \u043c\u043e\u043b\u043e\u043a\u0430" },
+      { time: "03:30", who: "mom_sleep", icon: "\ud83d\udca4", action: "\u041c\u0430\u043c\u0430 \u0434\u0440\u0435\u043c\u043b\u0435\u0442 \u0440\u044f\u0434\u043e\u043c \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c", note: "\u041b\u0451\u0433\u043a\u0438\u0439 \u0441\u043e\u043d \u043c\u0435\u0436\u0434\u0443 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f\u043c\u0438" },
+      { time: "04:30", who: "mom", icon: "\ud83e\udd31", action: "\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e", note: "" },
+      { time: "05:00", who: "mom_sleep", icon: "\ud83d\udca4", action: "\u041c\u0430\u043c\u0430 \u0434\u0440\u0435\u043c\u043b\u0435\u0442", note: "" },
+      { time: "06:00", who: "mom", icon: "\ud83e\udd31", action: "\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e", note: "" },
+      { time: "06:30", who: "mom_sleep", icon: "\ud83d\udca4", action: "\u041c\u0430\u043c\u0430 \u0434\u0440\u0435\u043c\u043b\u0435\u0442", note: "" },
+      { time: "07:30", who: "mom", icon: "\ud83e\udd31", action: "\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e", note: "" },
+      { time: "08:30", who: "dad", icon: "\ud83e\uddd1", action: "\u041f\u0430\u043f\u0430 \u0432\u0441\u0442\u0430\u0451\u0442 \u2192 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430", note: "\u041f\u043e\u0434\u0433\u0443\u0437\u043d\u0438\u043a, \u043f\u043e\u0434\u0435\u0440\u0436\u0430\u0442\u044c, \u043f\u043e\u0445\u043e\u0434\u0438\u0442\u044c" },
+      { time: "08:30", who: "mom_self", icon: "\ud83d\udebf", action: "\u041c\u0430\u043c\u0430: \u0434\u0443\u0448 + \u043d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u044b\u0439 \u0437\u0430\u0432\u0442\u0440\u0430\u043a", note: "45 \u043c\u0438\u043d\u0443\u0442 \u043f\u043e\u043b\u043d\u043e\u0441\u0442\u044c\u044e \u0431\u0435\u0437 \u0440\u0435\u0431\u0451\u043d\u043a\u0430. \u041d\u0435 \u043e\u0431\u0441\u0443\u0436\u0434\u0430\u0435\u0442\u0441\u044f." },
+      { time: "09:00", who: "dad", icon: "\ud83e\uddd1", action: "\u041f\u0430\u043f\u0430 \u0434\u0435\u0440\u0436\u0438\u0442 \u043c\u0430\u043b\u044b\u0448\u0430 / \u0433\u043e\u0442\u043e\u0432\u0438\u0442\u0441\u044f \u043a \u0440\u0430\u0431\u043e\u0442\u0435", note: "" },
+      { time: "09:15", who: "mom", icon: "\ud83e\udd31", action: "\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e \u043f\u043e \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044e", note: "" },
+      { time: "09:15", who: "dad_work", icon: "\ud83d\udcbb", action: "\u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u0438\u0437 \u0434\u043e\u043c\u0430", note: "\u041f\u043e\u043c\u043e\u0447\u044c \u0441 \u043f\u043e\u0434\u0433\u0443\u0437\u043d\u0438\u043a\u0430\u043c\u0438/\u0441\u0440\u044b\u0433\u0438\u0432\u0430\u043d\u0438\u0435\u043c \u043c\u0435\u0436\u0434\u0443 \u0437\u0430\u0434\u0430\u0447\u0430\u043c\u0438" },
+      { time: "10:00", who: "mom", icon: "\ud83e\udd31", action: "\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u043f\u043e \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044e (~\u043a\u0430\u0436\u0434\u044b\u0435 1\u20131,5 \u0447)", note: "\u041c\u0430\u043c\u0430 \u043e\u0442\u0434\u044b\u0445\u0430\u0435\u0442 \u043c\u0435\u0436\u0434\u0443 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f\u043c\u0438, \u043f\u0435\u0440\u0435\u043a\u0443\u0441\u044b\u0432\u0430\u0435\u0442, \u043f\u044c\u0451\u0442 \u0432\u043e\u0434\u0443" },
+      { time: "13:00", who: "dad", icon: "\ud83e\uddd1", action: "\u041f\u0430\u043f\u0430: \u043e\u0431\u0435\u0434\u0435\u043d\u043d\u044b\u0439 \u043f\u0435\u0440\u0435\u0440\u044b\u0432 \u2192 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430", note: "" },
+      { time: "13:00", who: "mom_self", icon: "\ud83c\udf7d\ufe0f", action: "\u041c\u0430\u043c\u0430 \u043d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u043e \u043e\u0431\u0435\u0434\u0430\u0435\u0442", note: "\u041a\u0430\u043b\u043e\u0440\u0438\u0439\u043d\u0430\u044f \u0435\u0434\u0430. \u0415\u0439 \u043d\u0443\u0436\u043d\u043e +500 \u043a\u043a\u0430\u043b/\u0434\u0435\u043d\u044c" },
+      { time: "13:30", who: "mom_sleep", icon: "\ud83d\ude34", action: "\u041c\u0430\u043c\u0430: \u0414\u041d\u0415\u0412\u041d\u041e\u0419 \u0421\u041e\u041d \u2014 1,5 \u0447\u0430\u0441\u0430", note: "\u041f\u0430\u043f\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c. \u0420\u0430\u0431\u043e\u0442\u0430 \u043f\u043e\u0434\u043e\u0436\u0434\u0451\u0442 90 \u043c\u0438\u043d\u0443\u0442." },
+      { time: "13:30", who: "dad", icon: "\ud83d\udc76", action: "\u041f\u0430\u043f\u0430: \u0434\u0435\u0436\u0443\u0440\u0441\u0442\u0432\u043e \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c (\u043e\u0431\u0435\u0434 + \u043f\u0435\u0440\u0435\u0440\u044b\u0432)", note: "\u041a\u0430\u0447\u0430\u0442\u044c, \u0445\u043e\u0434\u0438\u0442\u044c, \u043a\u043e\u0436\u0430 \u043a \u043a\u043e\u0436\u0435, \u0441\u043e\u0441\u043a\u0430/\u043c\u0438\u0437\u0438\u043d\u0435\u0446" },
+      { time: "15:00", who: "mom", icon: "\ud83e\udd31", action: "\u041c\u0430\u043c\u0430 \u043f\u0440\u043e\u0441\u044b\u043f\u0430\u0435\u0442\u0441\u044f \u2192 \u043a\u043e\u0440\u043c\u0438\u0442 \u0433\u0440\u0443\u0434\u044c\u044e", note: "" },
+      { time: "15:00", who: "dad_work", icon: "\ud83d\udcbb", action: "\u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u0438\u0437 \u0434\u043e\u043c\u0430", note: "" },
+      { time: "15:30", who: "mom", icon: "\ud83e\udd31", action: "\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u043f\u043e \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044e", note: "" },
+      { time: "18:00", who: "dad", icon: "\ud83e\uddd1", action: "\u041f\u0430\u043f\u0430 \u0437\u0430\u043a\u043e\u043d\u0447\u0438\u043b \u0440\u0430\u0431\u043e\u0442\u0443 \u2192 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430", note: "" },
+      { time: "18:00", who: "mom_self", icon: "\ud83c\udf7d\ufe0f", action: "\u041c\u0430\u043c\u0430 \u0443\u0436\u0438\u043d\u0430\u0435\u0442", note: "" },
+      { time: "18:30", who: "dad_self", icon: "\ud83c\udf7d\ufe0f", action: "\u041f\u0430\u043f\u0430 \u0443\u0436\u0438\u043d\u0430\u0435\u0442", note: "\u041c\u0430\u043c\u0430 \u0434\u0435\u0440\u0436\u0438\u0442 \u043c\u0430\u043b\u044b\u0448\u0430" },
+      { time: "19:00", who: "mom", icon: "\ud83e\udd31", action: "\u0412\u0435\u0447\u0435\u0440\u043d\u0435\u0435 \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435", note: "\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f \u043a\u0430\u0436\u0434\u044b\u0435 30\u201360 \u043c\u0438\u043d. \u042d\u0442\u043e \u043d\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u043e \u0438 \u0441\u0442\u0440\u043e\u0438\u0442 \u0437\u0430\u043f\u0430\u0441 \u043c\u043e\u043b\u043e\u043a\u0430." },
+      { time: "19:00", who: "dad", icon: "\ud83e\uddd1", action: "\u041f\u0430\u043f\u0430: \u043f\u043e\u0434\u0433\u0443\u0437\u043d\u0438\u043a\u0438, \u0441\u0440\u044b\u0433\u0438\u0432\u0430\u043d\u0438\u044f, \u0432\u043e\u0434\u0430 \u0438 \u043f\u0435\u0440\u0435\u043a\u0443\u0441\u044b \u0434\u043b\u044f \u043c\u0430\u043c\u044b", note: "\u041f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0442\u044c \u043c\u0430\u043c\u0443 \u0435\u0434\u043e\u0439 \u0438 \u0432\u043e\u0434\u043e\u0439 \u0432\u043e \u0432\u0440\u0435\u043c\u044f \u043c\u0430\u0440\u0430\u0444\u043e\u043d\u0430" },
+      { time: "22:30", who: "mom_self", icon: "\ud83d\udebf", action: "\u041c\u0430\u043c\u0430: \u0431\u044b\u0441\u0442\u0440\u044b\u0439 \u0434\u0443\u0448", note: "" },
+      { time: "22:45", who: "mom", icon: "\ud83e\udd31", action: "\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 + \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435", note: "\u0426\u0438\u043a\u043b \u043d\u0430\u0447\u0438\u043d\u0430\u0435\u0442\u0441\u044f \u0437\u0430\u043d\u043e\u0432\u043e" },
+    ],
+    sleepTotals: {
+      mom: { solid: "4 \u0447 (23:15\u201303:00)", dozing: "3\u20133,5 \u0447 (\u043c\u0435\u0436\u0434\u0443 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f\u043c\u0438)", nap: "1,5 \u0447 (\u0434\u043d\u0435\u0432\u043d\u043e\u0439 \u0441\u043e\u043d)", total: "8,5\u20139 \u0447" },
+      dad: { solid: "7 \u0447 (01:30\u201308:30)", total: "7 \u0447" },
+    }
+  },
+  grandma: {
+    blocks: [
+      { time: "23:00", who: "mom", icon: "\ud83e\udd31", action: "\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 + \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435", note: "\u0421\u0446\u0435\u0436\u0435\u043d\u043d\u043e\u0435 \u043c\u043e\u043b\u043e\u043a\u043e \u0443\u0431\u0440\u0430\u0442\u044c \u0432 \u0445\u043e\u043b\u043e\u0434\u0438\u043b\u044c\u043d\u0438\u043a" },
+      { time: "23:15", who: "mom_sleep", icon: "\ud83d\ude34", action: "\u041c\u0430\u043c\u0430 \u0441\u043f\u0438\u0442 (\u043d\u0430\u0447\u0430\u043b\u043e \u0431\u043b\u043e\u043a\u0430 1)", note: "" },
+      { time: "23:15", who: "dad", icon: "\ud83d\udc76", action: "\u041f\u0430\u043f\u0430 \u0434\u0435\u0440\u0436\u0438\u0442 / \u0443\u043a\u0430\u0447\u0438\u0432\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430", note: "" },
+      { time: "01:00", who: "dad", icon: "\ud83c\udf7c", action: "\u041f\u0430\u043f\u0430 \u0434\u0430\u0451\u0442 \u0421\u041c\u0415\u0421\u042c \u2014 50\u201360 \u043c\u043b", note: "\u0415\u0434\u0438\u043d\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0441\u043c\u0435\u0441\u044c\u044e \u0437\u0430 \u0434\u0435\u043d\u044c" },
+      { time: "01:30", who: "dad_sleep", icon: "\ud83d\ude34", action: "\u041f\u0430\u043f\u0430 \u043b\u043e\u0436\u0438\u0442\u0441\u044f \u0441\u043f\u0430\u0442\u044c", note: "" },
+      { time: "01:30", who: "mom_sleep", icon: "\ud83d\ude34", action: "\u041c\u0430\u043c\u0430 \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0430\u0435\u0442 \u0441\u043f\u0430\u0442\u044c", note: "" },
+      { time: "03:00", who: "mom", icon: "\ud83e\udd31", action: "\u041c\u0430\u043c\u0430 \u043f\u0440\u043e\u0441\u044b\u043f\u0430\u0435\u0442\u0441\u044f \u2192 \u043a\u043e\u0440\u043c\u0438\u0442 \u0433\u0440\u0443\u0434\u044c\u044e", note: "\u041e\u043a\u043d\u043e \u043f\u0438\u043a\u0430 \u043f\u0440\u043e\u043b\u0430\u043a\u0442\u0438\u043d\u0430" },
+      { time: "03:30", who: "mom_sleep", icon: "\ud83d\udca4", action: "\u041c\u0430\u043c\u0430 \u0434\u0440\u0435\u043c\u043b\u0435\u0442", note: "" },
+      { time: "04:30", who: "mom", icon: "\ud83e\udd31", action: "\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e", note: "" },
+      { time: "05:00", who: "mom_sleep", icon: "\ud83d\udca4", action: "\u041c\u0430\u043c\u0430 \u0434\u0440\u0435\u043c\u043b\u0435\u0442", note: "" },
+      { time: "06:00", who: "mom", icon: "\ud83e\udd31", action: "\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e", note: "" },
+      { time: "06:30", who: "mom_sleep", icon: "\ud83d\udca4", action: "\u041c\u0430\u043c\u0430 \u0434\u0440\u0435\u043c\u043b\u0435\u0442", note: "" },
+      { time: "07:30", who: "mom", icon: "\ud83e\udd31", action: "\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e", note: "" },
+      { time: "08:30", who: "dad", icon: "\ud83e\uddd1", action: "\u041f\u0430\u043f\u0430 \u0432\u0441\u0442\u0430\u0451\u0442 \u2192 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430", note: "" },
+      { time: "08:30", who: "mom_self", icon: "\ud83d\udebf", action: "\u041c\u0430\u043c\u0430: \u0434\u0443\u0448 + \u0437\u0430\u0432\u0442\u0440\u0430\u043a", note: "45 \u043c\u0438\u043d\u0443\u0442 \u0431\u0435\u0437 \u0440\u0435\u0431\u0451\u043d\u043a\u0430" },
+      { time: "09:00", who: "grandma", icon: "\ud83d\udc75", action: "\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u043f\u0440\u0438\u0445\u043e\u0434\u0438\u0442 \u2192 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430", note: "\u041f\u0430\u043f\u0430 \u043f\u0435\u0440\u0435\u0434\u0430\u0451\u0442 \u0434\u0435\u043b\u0430 \u0431\u0430\u0431\u0443\u0448\u043a\u0435, \u043d\u0430\u0447\u0438\u043d\u0430\u0435\u0442 \u0440\u0430\u0431\u043e\u0442\u0443" },
+      { time: "09:15", who: "mom", icon: "\ud83e\udd31", action: "\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0433\u0440\u0443\u0434\u044c\u044e", note: "" },
+      { time: "09:30", who: "grandma", icon: "\ud83d\udc75", action: "\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c \u043c\u0435\u0436\u0434\u0443 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u044f\u043c\u0438", note: "\u041f\u043e\u0434\u0433\u0443\u0437\u043d\u0438\u043a\u0438, \u0443\u043a\u0430\u0447\u0438\u0432\u0430\u043d\u0438\u0435 \u2014 \u043f\u0440\u0438\u043d\u043e\u0441\u0438\u0442 \u043c\u0430\u043b\u044b\u0448\u0430 \u043c\u0430\u043c\u0435 \u043d\u0430 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435" },
+      { time: "09:30", who: "dad_work", icon: "\ud83d\udcbb", action: "\u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 (\u0431\u0435\u0437 \u043f\u0435\u0440\u0435\u0440\u044b\u0432\u043e\u0432)", note: "\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u0431\u0435\u0440\u0451\u0442 \u043d\u0430 \u0441\u0435\u0431\u044f \u043c\u0430\u043b\u044b\u0448\u0430" },
+      { time: "09:30", who: "mom", icon: "\ud83e\udd31", action: "\u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u043f\u043e \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044e (~\u043a\u0430\u0436\u0434\u044b\u0435 1,5 \u0447)", note: "\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u043f\u0440\u0438\u043d\u043e\u0441\u0438\u0442 \u043c\u0430\u043b\u044b\u0448\u0430, \u043c\u0430\u043c\u0430 \u0442\u043e\u043b\u044c\u043a\u043e \u043a\u043e\u0440\u043c\u0438\u0442 \u0438 \u043e\u0442\u0434\u044b\u0445\u0430\u0435\u0442" },
+      { time: "13:00", who: "mom_self", icon: "\ud83c\udf7d\ufe0f", action: "\u041c\u0430\u043c\u0430 \u043e\u0431\u0435\u0434\u0430\u0435\u0442", note: "\u041c\u0430\u043b\u044b\u0448 \u0443 \u0431\u0430\u0431\u0443\u0448\u043a\u0438" },
+      { time: "13:30", who: "mom_sleep", icon: "\ud83d\ude34", action: "\u041c\u0430\u043c\u0430: \u0414\u041e\u041b\u0413\u0418\u0419 \u0421\u041e\u041d \u2014 2,5 \u0447\u0430\u0441\u0430", note: "\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u0441\u043f\u0440\u0430\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0441\u0430\u043c\u0430, \u0431\u0443\u0434\u0438\u0442 \u043c\u0430\u043c\u0443 \u0442\u043e\u043b\u044c\u043a\u043e \u043d\u0430 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435" },
+      { time: "13:30", who: "grandma", icon: "\ud83d\udc75", action: "\u0411\u0430\u0431\u0443\u0448\u043a\u0430: \u043c\u0430\u043b\u044b\u0448 + 1 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0443 \u043c\u0430\u043c\u044b ~15:00", note: "\u0420\u0430\u0437\u0431\u0443\u0434\u0438\u0442\u044c \u043c\u0430\u043c\u0443 \u0432 ~15:00 \u043d\u0430 \u043e\u0434\u043d\u043e \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435, \u043f\u043e\u0442\u043e\u043c \u0434\u0430\u0442\u044c \u0434\u043e\u0441\u043f\u0430\u0442\u044c" },
+      { time: "13:00", who: "dad_work", icon: "\ud83d\udcbb", action: "\u041f\u0430\u043f\u0430 \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 (\u0431\u0435\u0437 \u043f\u0435\u0440\u0435\u0440\u044b\u0432\u043e\u0432)", note: "" },
+      { time: "16:00", who: "mom", icon: "\ud83e\udd31", action: "\u041c\u0430\u043c\u0430 \u0432\u0441\u0442\u0430\u043b\u0430 \u2192 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u043f\u043e \u0442\u0440\u0435\u0431\u043e\u0432\u0430\u043d\u0438\u044e", note: "" },
+      { time: "17:00", who: "grandma", icon: "\ud83d\udc75", action: "\u0411\u0430\u0431\u0443\u0448\u043a\u0430 \u0443\u0445\u043e\u0434\u0438\u0442", note: "" },
+      { time: "17:00", who: "dad", icon: "\ud83e\uddd1", action: "\u041f\u0430\u043f\u0430 \u0437\u0430\u043a\u043e\u043d\u0447\u0438\u043b \u0440\u0430\u0431\u043e\u0442\u0443 \u2192 \u0437\u0430\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0430\u043b\u044b\u0448\u0430", note: "" },
+      { time: "17:00", who: "mom_self", icon: "\u2615", action: "\u041c\u0430\u043c\u0430: \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f / \u043e\u0442\u0434\u044b\u0445 / \u043f\u043e\u0435\u0441\u0442\u044c", note: "\u0427\u0430\u0441 \u043d\u0430 \u0442\u043e, \u0447\u0442\u043e\u0431\u044b \u043f\u043e\u0431\u044b\u0442\u044c \u0447\u0435\u043b\u043e\u0432\u0435\u043a\u043e\u043c" },
+      { time: "18:00", who: "dad_self", icon: "\ud83c\udf7d\ufe0f", action: "\u041f\u0430\u043f\u0430 \u0443\u0436\u0438\u043d\u0430\u0435\u0442", note: "" },
+      { time: "18:30", who: "mom", icon: "\ud83e\udd31", action: "\u0412\u0435\u0447\u0435\u0440\u043d\u0435\u0435 \u043a\u043b\u0430\u0441\u0442\u0435\u0440\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435", note: "" },
+      { time: "18:30", who: "dad", icon: "\ud83e\uddd1", action: "\u041f\u0430\u043f\u0430: \u043f\u043e\u043c\u043e\u0433\u0430\u0435\u0442 \u043c\u0430\u043c\u0435 (\u043f\u043e\u0434\u0433\u0443\u0437\u043d\u0438\u043a\u0438, \u0441\u0440\u044b\u0433\u0438\u0432\u0430\u043d\u0438\u044f, \u043f\u0435\u0440\u0435\u043a\u0443\u0441\u044b)", note: "" },
+      { time: "22:30", who: "mom_self", icon: "\ud83d\udebf", action: "\u041c\u0430\u043c\u0430: \u0431\u044b\u0441\u0442\u0440\u044b\u0439 \u0434\u0443\u0448", note: "" },
+      { time: "22:45", who: "mom", icon: "\ud83e\udd31", action: "\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 + \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u043d\u0438\u0435", note: "\u0426\u0438\u043a\u043b \u043d\u0430\u0447\u0438\u043d\u0430\u0435\u0442\u0441\u044f \u0437\u0430\u043d\u043e\u0432\u043e" },
+    ],
+    sleepTotals: {
+      mom: { solid: "4 \u0447 (23:15\u201303:00)", dozing: "3\u20133,5 \u0447", nap: "2,5 \u0447 (\u0434\u043d\u0435\u0432\u043d\u043e\u0439!)", total: "9,5\u201310 \u0447" },
+      dad: { solid: "7 \u0447 (01:30\u201308:30)", total: "7 \u0447" },
+    }
+  }
 };
 
 var COLOR_MAP = {
-mom:       { bg: “#FDE8E8”, border: “#E53E3E”, text: “#9B2C2C”, label: “\u041c\u0430\u043c\u0430: \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435” },
-mom_sleep: { bg: “#C3DAFE”, border: “#4C51BF”, text: “#2A4365”, label: “\u041c\u0430\u043c\u0430: \u0441\u043e\u043d” },
-mom_self:  { bg: “#FEFCBF”, border: “#D69E2E”, text: “#744210”, label: “\u041c\u0430\u043c\u0430: \u0434\u043b\u044f \u0441\u0435\u0431\u044f” },
-dad:       { bg: “#C6F6D5”, border: “#38A169”, text: “#22543D”, label: “\u041f\u0430\u043f\u0430: \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c” },
-dad_sleep: { bg: “#BEE3F8”, border: “#3182CE”, text: “#2A4365”, label: “\u041f\u0430\u043f\u0430: \u0441\u043e\u043d” },
-dad_work:  { bg: “#E9D8FD”, border: “#805AD5”, text: “#44337A”, label: “\u041f\u0430\u043f\u0430: \u0440\u0430\u0431\u043e\u0442\u0430” },
-dad_self:  { bg: “#FEFCBF”, border: “#D69E2E”, text: “#744210”, label: “\u041f\u0430\u043f\u0430: \u0434\u043b\u044f \u0441\u0435\u0431\u044f” },
-grandma:   { bg: “#FEEBC8”, border: “#DD6B20”, text: “#7B341E”, label: “\u0411\u0430\u0431\u0443\u0448\u043a\u0430” },
+  mom:       { bg: "#FDE8E8", border: "#E53E3E", text: "#9B2C2C", label: "\u041c\u0430\u043c\u0430: \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435" },
+  mom_sleep: { bg: "#C3DAFE", border: "#4C51BF", text: "#2A4365", label: "\u041c\u0430\u043c\u0430: \u0441\u043e\u043d" },
+  mom_self:  { bg: "#FEFCBF", border: "#D69E2E", text: "#744210", label: "\u041c\u0430\u043c\u0430: \u0434\u043b\u044f \u0441\u0435\u0431\u044f" },
+  dad:       { bg: "#C6F6D5", border: "#38A169", text: "#22543D", label: "\u041f\u0430\u043f\u0430: \u0441 \u043c\u0430\u043b\u044b\u0448\u043e\u043c" },
+  dad_sleep: { bg: "#BEE3F8", border: "#3182CE", text: "#2A4365", label: "\u041f\u0430\u043f\u0430: \u0441\u043e\u043d" },
+  dad_work:  { bg: "#E9D8FD", border: "#805AD5", text: "#44337A", label: "\u041f\u0430\u043f\u0430: \u0440\u0430\u0431\u043e\u0442\u0430" },
+  dad_self:  { bg: "#FEFCBF", border: "#D69E2E", text: "#744210", label: "\u041f\u0430\u043f\u0430: \u0434\u043b\u044f \u0441\u0435\u0431\u044f" },
+  grandma:   { bg: "#FEEBC8", border: "#DD6B20", text: "#7B341E", label: "\u0411\u0430\u0431\u0443\u0448\u043a\u0430" },
 };
 
 var formulaInfo = [
-[”\u0414\u0435\u043d\u044c 7”, “50\u201360 \u043c\u043b”],
-[”\u0414\u0435\u043d\u044c 10”, “60\u201370 \u043c\u043b”],
-[”\u0414\u0435\u043d\u044c 14”, “70\u201380 \u043c\u043b”],
-[”\u041d\u0435\u0434. 3\u20134”, “80\u201390 \u043c\u043b”],
+  ["\u0414\u0435\u043d\u044c 7", "50\u201360 \u043c\u043b"],
+  ["\u0414\u0435\u043d\u044c 10", "60\u201370 \u043c\u043b"],
+  ["\u0414\u0435\u043d\u044c 14", "70\u201380 \u043c\u043b"],
+  ["\u041d\u0435\u0434. 3\u20134", "80\u201390 \u043c\u043b"],
 ];
 
 function Schedule() {
-var _s1 = useState(“regular”), dayTab = _s1[0], setDayTab = _s1[1];
-var _s2 = useState(“simple”), viewMode = _s2[0], setViewMode = _s2[1];
-var _s3 = useState(null), expandedIdx = _s3[0], setExpandedIdx = _s3[1];
+  var _s1 = useState("regular"), dayTab = _s1[0], setDayTab = _s1[1];
+  var _s2 = useState("simple"), viewMode = _s2[0], setViewMode = _s2[1];
+  var _s3 = useState(null), expandedIdx = _s3[0], setExpandedIdx = _s3[1];
 
-var isSimple = viewMode === “simple”;
-var simpleData = SIMPLE[dayTab];
-var detailedData = DETAILED[dayTab];
-var sleepTotals = isSimple ? simpleData.sleep : detailedData.sleepTotals;
+  var isSimple = viewMode === "simple";
+  var simpleData = SIMPLE[dayTab];
+  var detailedData = DETAILED[dayTab];
+  var sleepTotals = isSimple ? simpleData.sleep : detailedData.sleepTotals;
 
-function renderSimple() {
-return e(“div”, { style: { position: “relative”, paddingLeft: 56 } },
-e(“div”, { style: { position: “absolute”, left: 42, top: 0, bottom: 0, width: 3, background: “linear-gradient(to bottom, #CBD5E0, #A0AEC0, #CBD5E0)”, borderRadius: 2 } }),
-simpleData.blocks.map(function(block, i) {
-var isF = block.formula;
-var pc = COLOR_MAP[block.colors[0]];
-var bg2 = block.colors.length > 1
-? “linear-gradient(135deg, “ + COLOR_MAP[block.colors[0]].bg + “ 0%, “ + COLOR_MAP[block.colors[Math.min(1, block.colors.length-1)]].bg + “ 100%)”
-: pc.bg;
-var bc = isF ? “#E53E3E” : pc.border;
+  function renderSimple() {
+    return e("div", { style: { position: "relative", paddingLeft: 56 } },
+      e("div", { style: { position: "absolute", left: 42, top: 0, bottom: 0, width: 3, background: "linear-gradient(to bottom, #CBD5E0, #A0AEC0, #CBD5E0)", borderRadius: 2 } }),
+      simpleData.blocks.map(function(block, i) {
+        var isF = block.formula;
+        var pc = COLOR_MAP[block.colors[0]];
+        var bg2 = block.colors.length > 1
+          ? "linear-gradient(135deg, " + COLOR_MAP[block.colors[0]].bg + " 0%, " + COLOR_MAP[block.colors[Math.min(1, block.colors.length-1)]].bg + " 100%)"
+          : pc.bg;
+        var bc = isF ? "#E53E3E" : pc.border;
 
-```
-    return e("div", { key: i, style: { position: "relative", marginBottom: 10 } },
-      e("div", { style: {
-        position: "absolute", left: -22, top: 14,
-        width: isF ? 16 : 11, height: isF ? 16 : 11,
-        borderRadius: "50%", background: bc,
-        border: "2.5px solid " + (isF ? "#FEB2B2" : "#fff"),
-        boxShadow: isF ? "0 0 0 3px #FEB2B2, 0 0 8px rgba(229,62,62,0.3)" : "0 1px 3px rgba(0,0,0,0.12)",
-        marginLeft: isF ? -2.5 : 0, marginTop: isF ? -2.5 : 0, zIndex: 2,
-      } }),
-      e("div", { style: { position: "absolute", left: -58, top: 12, fontSize: 9, fontWeight: 800, color: "#718096", width: 42, textAlign: "right" } }, block.time.split("\u2013")[0]),
-      e("div", { style: {
-        marginLeft: 12, padding: "10px 14px",
-        background: isF ? "linear-gradient(135deg, #FFF5F5 0%, #FED7D7 100%)" : bg2,
-        borderLeft: "4px solid " + bc,
-        borderRadius: 12,
-        boxShadow: isF ? "0 3px 12px rgba(229,62,62,0.18)" : "0 1px 4px rgba(0,0,0,0.04)",
-      } },
-        e("div", { style: { fontSize: 10, fontWeight: 800, color: isF ? "#C53030" : "#718096", marginBottom: 4, letterSpacing: "0.3px" } }, block.time),
-        e("div", { style: { display: "flex", alignItems: "center", gap: 8 } },
-          e("span", { style: { fontSize: 20, lineHeight: 1 } }, block.icon),
-          e("span", { style: { fontSize: 13, fontWeight: isF ? 800 : 600, color: isF ? "#9B2C2C" : pc.text, lineHeight: 1.45 } }, block.action)
+        return e("div", { key: i, style: { position: "relative", marginBottom: 10 } },
+          e("div", { style: {
+            position: "absolute", left: -22, top: 14,
+            width: isF ? 16 : 11, height: isF ? 16 : 11,
+            borderRadius: "50%", background: bc,
+            border: "2.5px solid " + (isF ? "#FEB2B2" : "#fff"),
+            boxShadow: isF ? "0 0 0 3px #FEB2B2, 0 0 8px rgba(229,62,62,0.3)" : "0 1px 3px rgba(0,0,0,0.12)",
+            marginLeft: isF ? -2.5 : 0, marginTop: isF ? -2.5 : 0, zIndex: 2,
+          } }),
+          e("div", { style: { position: "absolute", left: -58, top: 12, fontSize: 9, fontWeight: 800, color: "#718096", width: 42, textAlign: "right" } }, block.time.split("\u2013")[0]),
+          e("div", { style: {
+            marginLeft: 12, padding: "10px 14px",
+            background: isF ? "linear-gradient(135deg, #FFF5F5 0%, #FED7D7 100%)" : bg2,
+            borderLeft: "4px solid " + bc,
+            borderRadius: 12,
+            boxShadow: isF ? "0 3px 12px rgba(229,62,62,0.18)" : "0 1px 4px rgba(0,0,0,0.04)",
+          } },
+            e("div", { style: { fontSize: 10, fontWeight: 800, color: isF ? "#C53030" : "#718096", marginBottom: 4, letterSpacing: "0.3px" } }, block.time),
+            e("div", { style: { display: "flex", alignItems: "center", gap: 8 } },
+              e("span", { style: { fontSize: 20, lineHeight: 1 } }, block.icon),
+              e("span", { style: { fontSize: 13, fontWeight: isF ? 800 : 600, color: isF ? "#9B2C2C" : pc.text, lineHeight: 1.45 } }, block.action)
+            ),
+            block.colors.length > 1 ? e("div", { style: { display: "flex", gap: 6, marginTop: 7 } },
+              block.colors.map(function(c, j) {
+                return e("div", { key: j, style: { display: "flex", alignItems: "center", gap: 3, fontSize: 9, color: "#718096" } },
+                  e("div", { style: { width: 7, height: 7, borderRadius: "50%", background: COLOR_MAP[c].border } }),
+                  COLOR_MAP[c].label.split(": ")[0]
+                );
+              })
+            ) : null
+          )
+        );
+      })
+    );
+  }
+
+  function renderDetailed() {
+    return e("div", { style: { position: "relative", paddingLeft: 52 } },
+      e("div", { style: { position: "absolute", left: 39, top: 0, bottom: 0, width: 2, background: "linear-gradient(to bottom, #CBD5E0, #A0AEC0, #CBD5E0)" } }),
+      detailedData.blocks.map(function(block, i) {
+        var colors = COLOR_MAP[block.who];
+        var isF = block.icon === "\ud83c\udf7c";
+        var isExp = expandedIdx === i;
+
+        return e("div", {
+          key: i,
+          onClick: function() { setExpandedIdx(isExp ? null : i); },
+          style: { position: "relative", marginBottom: 6, cursor: block.note ? "pointer" : "default" }
+        },
+          e("div", { style: {
+            position: "absolute", left: -20, top: 10,
+            width: isF ? 14 : 10, height: isF ? 14 : 10,
+            borderRadius: "50%", background: colors.border,
+            border: "2px solid " + (isF ? "#E53E3E" : "#fff"),
+            boxShadow: isF ? "0 0 0 3px #FEB2B2" : "0 1px 2px rgba(0,0,0,0.1)",
+            marginLeft: isF ? -2 : 0, marginTop: isF ? -2 : 0, zIndex: 2,
+          } }),
+          e("div", { style: { position: "absolute", left: -55, top: 8, fontSize: 10, fontWeight: 700, color: "#718096", width: 38, textAlign: "right" } }, block.time),
+          e("div", { style: {
+            marginLeft: 10, padding: "8px 12px",
+            background: isF ? "linear-gradient(135deg, #FFF5F5 0%, #FED7D7 100%)" : colors.bg,
+            border: "1.5px solid " + (isF ? "#FC8181" : colors.border) + "40",
+            borderLeft: "4px solid " + colors.border,
+            borderRadius: 10,
+            boxShadow: isF ? "0 2px 8px rgba(229,62,62,0.15)" : "none",
+          } },
+            e("div", { style: { display: "flex", alignItems: "center", gap: 6 } },
+              e("span", { style: { fontSize: 14 } }, block.icon),
+              e("span", { style: { fontSize: 12, fontWeight: isF ? 800 : 600, color: colors.text, flex: 1 } }, block.action),
+              block.note ? e("span", { style: { fontSize: 10, color: "#A0AEC0", transform: isExp ? "rotate(180deg)" : "none", transition: "transform 0.2s", display: "inline-block" } }, "\u25bc") : null
+            ),
+            isExp && block.note ? e("div", { style: { marginTop: 6, paddingTop: 6, borderTop: "1px dashed " + colors.border + "40", fontSize: 11, color: "#4A5568", lineHeight: 1.5 } }, block.note) : null
+          )
+        );
+      })
+    );
+  }
+
+  function renderSleep() {
+    if (isSimple) {
+      return e("div", { style: { marginTop: 24, padding: 16, background: "#fff", borderRadius: 14, boxShadow: "0 2px 10px rgba(0,0,0,0.06)" } },
+        e("h3", { style: { fontSize: 14, fontWeight: 800, color: "#2D3748", margin: "0 0 12px 0" } }, "\ud83d\udca4 \u0418\u0442\u043e\u0433\u043e \u0441\u043e\u043d"),
+        e("div", { style: { display: "flex", gap: 12 } },
+          e("div", { style: { flex: 1, padding: 12, background: "#FDE8E8", borderRadius: 10, textAlign: "center" } },
+            e("div", { style: { fontSize: 11, fontWeight: 700, color: "#E53E3E", marginBottom: 4 } }, "\u041c\u0410\u041c\u0410"),
+            e("div", { style: { fontSize: 20, fontWeight: 800, color: "#9B2C2C" } }, sleepTotals.mom)
+          ),
+          e("div", { style: { flex: 1, padding: 12, background: "#C6F6D5", borderRadius: 10, textAlign: "center" } },
+            e("div", { style: { fontSize: 11, fontWeight: 700, color: "#38A169", marginBottom: 4 } }, "\u041f\u0410\u041f\u0410"),
+            e("div", { style: { fontSize: 20, fontWeight: 800, color: "#22543D" } }, sleepTotals.dad)
+          )
+        )
+      );
+    }
+    return e("div", { style: { marginTop: 24, padding: 16, background: "#fff", borderRadius: 14, boxShadow: "0 2px 10px rgba(0,0,0,0.06)" } },
+      e("h3", { style: { fontSize: 14, fontWeight: 800, color: "#2D3748", margin: "0 0 12px 0" } }, "\ud83d\udca4 \u0418\u0442\u043e\u0433\u043e \u0441\u043e\u043d"),
+      e("div", { style: { display: "flex", gap: 12 } },
+        e("div", { style: { flex: 1, padding: 10, background: "#F7FAFC", borderRadius: 10 } },
+          e("div", { style: { fontSize: 11, fontWeight: 700, color: "#E53E3E", marginBottom: 6 } }, "\u041c\u0410\u041c\u0410"),
+          e("div", { style: { fontSize: 10, color: "#4A5568", lineHeight: 1.8 } },
+            e("div", null, "\ud83c\udf19 \u0413\u043b\u0443\u0431\u043e\u043a\u0438\u0439: " + sleepTotals.mom.solid),
+            e("div", null, "\ud83d\udca4 \u0414\u0440\u0451\u043c\u0430: " + sleepTotals.mom.dozing),
+            e("div", null, "\ud83d\ude34 \u0414\u043d\u0435\u0432\u043d\u043e\u0439: " + sleepTotals.mom.nap),
+            e("div", { style: { fontWeight: 800, color: "#2D3748", marginTop: 4, fontSize: 13 } }, "\u0412\u0441\u0435\u0433\u043e: " + sleepTotals.mom.total)
+          )
         ),
-        block.colors.length > 1 ? e("div", { style: { display: "flex", gap: 6, marginTop: 7 } },
-          block.colors.map(function(c, j) {
-            return e("div", { key: j, style: { display: "flex", alignItems: "center", gap: 3, fontSize: 9, color: "#718096" } },
-              e("div", { style: { width: 7, height: 7, borderRadius: "50%", background: COLOR_MAP[c].border } }),
-              COLOR_MAP[c].label.split(": ")[0]
-            );
-          })
-        ) : null
+        e("div", { style: { flex: 1, padding: 10, background: "#F7FAFC", borderRadius: 10 } },
+          e("div", { style: { fontSize: 11, fontWeight: 700, color: "#38A169", marginBottom: 6 } }, "\u041f\u0410\u041f\u0410"),
+          e("div", { style: { fontSize: 10, color: "#4A5568", lineHeight: 1.8 } },
+            e("div", null, "\ud83c\udf19 \u0413\u043b\u0443\u0431\u043e\u043a\u0438\u0439: " + sleepTotals.dad.solid),
+            e("div", { style: { fontWeight: 800, color: "#2D3748", marginTop: 4, fontSize: 13 } }, "\u0412\u0441\u0435\u0433\u043e: " + sleepTotals.dad.total)
+          )
+        )
       )
     );
-  })
-);
-```
+  }
 
-}
+  return e("div", null,
+    e("div", { style: { textAlign: "center", marginBottom: 16 } },
+      e("div", { style: { fontSize: 32, marginBottom: 4 } }, "\ud83d\udc76"),
+      e("h1", { style: { fontSize: 22, fontWeight: 800, color: "#2D3748", margin: "0 0 4px 0", letterSpacing: "-0.5px" } }, "\u0420\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u2014 7-\u0439 \u0434\u0435\u043d\u044c"),
+      e("p", { style: { fontSize: 13, color: "#718096", margin: 0 } }, "\u041c\u0430\u043b\u044b\u0448 4680 \u0433 \u00b7 1 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0441\u043c\u0435\u0441\u044c\u044e/\u0434\u0435\u043d\u044c \u00b7 \u041f\u0430\u043f\u0430 \u043d\u0430 \u0443\u0434\u0430\u043b\u0451\u043d\u043a\u0435")
+    ),
 
-function renderDetailed() {
-return e(“div”, { style: { position: “relative”, paddingLeft: 52 } },
-e(“div”, { style: { position: “absolute”, left: 39, top: 0, bottom: 0, width: 2, background: “linear-gradient(to bottom, #CBD5E0, #A0AEC0, #CBD5E0)” } }),
-detailedData.blocks.map(function(block, i) {
-var colors = COLOR_MAP[block.who];
-var isF = block.icon === “\ud83c\udf7c”;
-var isExp = expandedIdx === i;
+    // Day tabs
+    e("div", { style: { display: "flex", gap: 8, marginBottom: 10, padding: "4px", background: "#E2E8F0", borderRadius: 14 } },
+      ["regular", "grandma"].map(function(tab) {
+        return e("button", {
+          key: tab,
+          onClick: function() { setDayTab(tab); setExpandedIdx(null); },
+          style: {
+            flex: 1, padding: "10px 8px", border: "none", borderRadius: 11, cursor: "pointer",
+            fontSize: 13, fontWeight: 700, fontFamily: "inherit", transition: "all 0.2s",
+            background: dayTab === tab ? "#fff" : "transparent",
+            color: dayTab === tab ? "#2D3748" : "#718096",
+            boxShadow: dayTab === tab ? "0 2px 8px rgba(0,0,0,0.08)" : "none",
+          }
+        }, tab === "regular" ? "\ud83d\udcc5 \u041e\u0431\u044b\u0447\u043d\u044b\u0439 \u0434\u0435\u043d\u044c" : "\ud83d\udc75 \u0414\u0435\u043d\u044c \u0441 \u0431\u0430\u0431\u0443\u0448\u043a\u043e\u0439");
+      })
+    ),
 
-```
-    return e("div", {
-      key: i,
-      onClick: function() { setExpandedIdx(isExp ? null : i); },
-      style: { position: "relative", marginBottom: 6, cursor: block.note ? "pointer" : "default" }
-    },
-      e("div", { style: {
-        position: "absolute", left: -20, top: 10,
-        width: isF ? 14 : 10, height: isF ? 14 : 10,
-        borderRadius: "50%", background: colors.border,
-        border: "2px solid " + (isF ? "#E53E3E" : "#fff"),
-        boxShadow: isF ? "0 0 0 3px #FEB2B2" : "0 1px 2px rgba(0,0,0,0.1)",
-        marginLeft: isF ? -2 : 0, marginTop: isF ? -2 : 0, zIndex: 2,
-      } }),
-      e("div", { style: { position: "absolute", left: -55, top: 8, fontSize: 10, fontWeight: 700, color: "#718096", width: 38, textAlign: "right" } }, block.time),
-      e("div", { style: {
-        marginLeft: 10, padding: "8px 12px",
-        background: isF ? "linear-gradient(135deg, #FFF5F5 0%, #FED7D7 100%)" : colors.bg,
-        border: "1.5px solid " + (isF ? "#FC8181" : colors.border) + "40",
-        borderLeft: "4px solid " + colors.border,
-        borderRadius: 10,
-        boxShadow: isF ? "0 2px 8px rgba(229,62,62,0.15)" : "none",
-      } },
-        e("div", { style: { display: "flex", alignItems: "center", gap: 6 } },
-          e("span", { style: { fontSize: 14 } }, block.icon),
-          e("span", { style: { fontSize: 12, fontWeight: isF ? 800 : 600, color: colors.text, flex: 1 } }, block.action),
-          block.note ? e("span", { style: { fontSize: 10, color: "#A0AEC0", transform: isExp ? "rotate(180deg)" : "none", transition: "transform 0.2s", display: "inline-block" } }, "\u25bc") : null
-        ),
-        isExp && block.note ? e("div", { style: { marginTop: 6, paddingTop: 6, borderTop: "1px dashed " + colors.border + "40", fontSize: 11, color: "#4A5568", lineHeight: 1.5 } }, block.note) : null
+    // View toggle
+    e("div", { style: { display: "flex", justifyContent: "center", marginBottom: 18 } },
+      e("div", { style: { display: "inline-flex", background: "#fff", borderRadius: 10, padding: 3, boxShadow: "0 1px 4px rgba(0,0,0,0.06)" } },
+        ["simple", "detailed"].map(function(mode) {
+          return e("button", {
+            key: mode,
+            onClick: function() { setViewMode(mode); setExpandedIdx(null); },
+            style: {
+              padding: "7px 20px", border: "none", borderRadius: 8, cursor: "pointer",
+              fontSize: 12, fontWeight: 700, fontFamily: "inherit", transition: "all 0.2s",
+              background: viewMode === mode ? "#4C51BF" : "transparent",
+              color: viewMode === mode ? "#fff" : "#718096",
+            }
+          }, mode === "simple" ? "\u26a1 \u041a\u0440\u0430\u0442\u043a\u043e" : "\ud83d\udccb \u041f\u043e\u0434\u0440\u043e\u0431\u043d\u043e");
+        })
       )
-    );
-  })
-);
-```
+    ),
 
+    // Legend (detailed only)
+    !isSimple ? e("div", { style: { display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 16, padding: "10px 12px", background: "#fff", borderRadius: 12, boxShadow: "0 1px 3px rgba(0,0,0,0.04)" } },
+      Object.entries(COLOR_MAP)
+        .filter(function(en) { return dayTab === "grandma" || en[0] !== "grandma"; })
+        .map(function(en) {
+          return e("div", { key: en[0], style: { display: "flex", alignItems: "center", gap: 4, fontSize: 10, color: "#4A5568" } },
+            e("div", { style: { width: 10, height: 10, borderRadius: 3, background: en[1].bg, border: "2px solid " + en[1].border } }),
+            en[1].label
+          );
+        })
+    ) : null,
+
+    // Timeline
+    isSimple ? renderSimple() : renderDetailed(),
+
+    // Sleep
+    renderSleep(),
+
+    // Formula
+    e("div", { style: { marginTop: 16, padding: 16, background: "#FFF5F5", borderRadius: 14, border: "1.5px solid #FED7D7" } },
+      e("h3", { style: { fontSize: 14, fontWeight: 800, color: "#9B2C2C", margin: "0 0 10px 0" } }, "\ud83c\udf7c \u041e\u0431\u044a\u0451\u043c \u0441\u043c\u0435\u0441\u0438 (1 \u0440\u0430\u0437/\u0434\u0435\u043d\u044c, \u043d\u043e\u0447\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435)"),
+      e("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 } },
+        formulaInfo.map(function(item) {
+          return e("div", { key: item[0], style: { padding: "6px 10px", background: "#fff", borderRadius: 8, display: "flex", justifyContent: "space-between", fontSize: 11 } },
+            e("span", { style: { color: "#718096" } }, item[0]),
+            e("span", { style: { fontWeight: 800, color: "#9B2C2C" } }, item[1])
+          );
+        })
+      )
+    ),
+
+    // Rules
+    e("div", { style: { marginTop: 16, padding: 16, background: "#EBF8FF", borderRadius: 14, border: "1.5px solid #BEE3F8", marginBottom: 20 } },
+      e("h3", { style: { fontSize: 14, fontWeight: 800, color: "#2A4365", margin: "0 0 8px 0" } }, "\u26a1 4 \u0436\u0435\u043b\u0435\u0437\u043d\u044b\u0445 \u043f\u0440\u0430\u0432\u0438\u043b\u0430"),
+      e("div", { style: { fontSize: 11, color: "#2C5282", lineHeight: 2 } },
+        e("div", null, e("strong", null, "1."), " \u041c\u0430\u043c\u0430 \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u0435\u0442\u0441\u044f \u043f\u0435\u0440\u0435\u0434 \u0441\u043d\u043e\u043c (22:45). \u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c = \u043f\u043e\u0442\u0435\u0440\u044f\u0442\u044c \u043c\u043e\u043b\u043e\u043a\u043e."),
+        e("div", null, e("strong", null, "2."), " \u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0432 03:00 \u2014 \u0442\u043e\u043b\u044c\u043a\u043e \u0433\u0440\u0443\u0434\u044c\u044e. \u041f\u0438\u043a \u043f\u0440\u043e\u043b\u0430\u043a\u0442\u0438\u043d\u0430 \u043d\u043e\u0447\u044c\u044e."),
+        e("div", null, e("strong", null, "3."), " \u0421\u0447\u0438\u0442\u0430\u0439\u0442\u0435 \u043c\u043e\u043a\u0440\u044b\u0435 \u043f\u043e\u0434\u0433\u0443\u0437\u043d\u0438\u043a\u0438. 6+ \u0432 \u0441\u0443\u0442\u043a\u0438 = \u043c\u0430\u043b\u044b\u0448 \u0441\u044b\u0442. \u041c\u0435\u043d\u044c\u0448\u0435 = \u043a \u0432\u0440\u0430\u0447\u0443."),
+        e("div", null, e("strong", null, "4."), " \u041f\u0430\u043f\u0438\u043d\u0430 \u0441\u043c\u0435\u043d\u0430 13:00\u201315:00 \u2014 \u0441\u0432\u044f\u0449\u0435\u043d\u043d\u0430. \u041e\u0442 \u043d\u0435\u0451 \u0437\u0430\u0432\u0438\u0441\u0438\u0442 \u043c\u0430\u043c\u0438\u043d \u0434\u043d\u0435\u0432\u043d\u043e\u0439 \u0441\u043e\u043d.")
+      )
+    )
+  );
 }
 
-function renderSleep() {
-if (isSimple) {
-return e(“div”, { style: { marginTop: 24, padding: 16, background: “#fff”, borderRadius: 14, boxShadow: “0 2px 10px rgba(0,0,0,0.06)” } },
-e(“h3”, { style: { fontSize: 14, fontWeight: 800, color: “#2D3748”, margin: “0 0 12px 0” } }, “\ud83d\udca4 \u0418\u0442\u043e\u0433\u043e \u0441\u043e\u043d”),
-e(“div”, { style: { display: “flex”, gap: 12 } },
-e(“div”, { style: { flex: 1, padding: 12, background: “#FDE8E8”, borderRadius: 10, textAlign: “center” } },
-e(“div”, { style: { fontSize: 11, fontWeight: 700, color: “#E53E3E”, marginBottom: 4 } }, “\u041c\u0410\u041c\u0410”),
-e(“div”, { style: { fontSize: 20, fontWeight: 800, color: “#9B2C2C” } }, sleepTotals.mom)
-),
-e(“div”, { style: { flex: 1, padding: 12, background: “#C6F6D5”, borderRadius: 10, textAlign: “center” } },
-e(“div”, { style: { fontSize: 11, fontWeight: 700, color: “#38A169”, marginBottom: 4 } }, “\u041f\u0410\u041f\u0410”),
-e(“div”, { style: { fontSize: 20, fontWeight: 800, color: “#22543D” } }, sleepTotals.dad)
-)
-)
-);
-}
-return e(“div”, { style: { marginTop: 24, padding: 16, background: “#fff”, borderRadius: 14, boxShadow: “0 2px 10px rgba(0,0,0,0.06)” } },
-e(“h3”, { style: { fontSize: 14, fontWeight: 800, color: “#2D3748”, margin: “0 0 12px 0” } }, “\ud83d\udca4 \u0418\u0442\u043e\u0433\u043e \u0441\u043e\u043d”),
-e(“div”, { style: { display: “flex”, gap: 12 } },
-e(“div”, { style: { flex: 1, padding: 10, background: “#F7FAFC”, borderRadius: 10 } },
-e(“div”, { style: { fontSize: 11, fontWeight: 700, color: “#E53E3E”, marginBottom: 6 } }, “\u041c\u0410\u041c\u0410”),
-e(“div”, { style: { fontSize: 10, color: “#4A5568”, lineHeight: 1.8 } },
-e(“div”, null, “\ud83c\udf19 \u0413\u043b\u0443\u0431\u043e\u043a\u0438\u0439: “ + sleepTotals.mom.solid),
-e(“div”, null, “\ud83d\udca4 \u0414\u0440\u0451\u043c\u0430: “ + sleepTotals.mom.dozing),
-e(“div”, null, “\ud83d\ude34 \u0414\u043d\u0435\u0432\u043d\u043e\u0439: “ + sleepTotals.mom.nap),
-e(“div”, { style: { fontWeight: 800, color: “#2D3748”, marginTop: 4, fontSize: 13 } }, “\u0412\u0441\u0435\u0433\u043e: “ + sleepTotals.mom.total)
-)
-),
-e(“div”, { style: { flex: 1, padding: 10, background: “#F7FAFC”, borderRadius: 10 } },
-e(“div”, { style: { fontSize: 11, fontWeight: 700, color: “#38A169”, marginBottom: 6 } }, “\u041f\u0410\u041f\u0410”),
-e(“div”, { style: { fontSize: 10, color: “#4A5568”, lineHeight: 1.8 } },
-e(“div”, null, “\ud83c\udf19 \u0413\u043b\u0443\u0431\u043e\u043a\u0438\u0439: “ + sleepTotals.dad.solid),
-e(“div”, { style: { fontWeight: 800, color: “#2D3748”, marginTop: 4, fontSize: 13 } }, “\u0412\u0441\u0435\u0433\u043e: “ + sleepTotals.dad.total)
-)
-)
-)
-);
-}
-
-return e(“div”, null,
-e(“div”, { style: { textAlign: “center”, marginBottom: 16 } },
-e(“div”, { style: { fontSize: 32, marginBottom: 4 } }, “\ud83d\udc76”),
-e(“h1”, { style: { fontSize: 22, fontWeight: 800, color: “#2D3748”, margin: “0 0 4px 0”, letterSpacing: “-0.5px” } }, “\u0420\u0430\u0441\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u2014 7-\u0439 \u0434\u0435\u043d\u044c”),
-e(“p”, { style: { fontSize: 13, color: “#718096”, margin: 0 } }, “\u041c\u0430\u043b\u044b\u0448 4680 \u0433 \u00b7 1 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0441\u043c\u0435\u0441\u044c\u044e/\u0434\u0435\u043d\u044c \u00b7 \u041f\u0430\u043f\u0430 \u043d\u0430 \u0443\u0434\u0430\u043b\u0451\u043d\u043a\u0435”)
-),
-
-```
-// Day tabs
-e("div", { style: { display: "flex", gap: 8, marginBottom: 10, padding: "4px", background: "#E2E8F0", borderRadius: 14 } },
-  ["regular", "grandma"].map(function(tab) {
-    return e("button", {
-      key: tab,
-      onClick: function() { setDayTab(tab); setExpandedIdx(null); },
-      style: {
-        flex: 1, padding: "10px 8px", border: "none", borderRadius: 11, cursor: "pointer",
-        fontSize: 13, fontWeight: 700, fontFamily: "inherit", transition: "all 0.2s",
-        background: dayTab === tab ? "#fff" : "transparent",
-        color: dayTab === tab ? "#2D3748" : "#718096",
-        boxShadow: dayTab === tab ? "0 2px 8px rgba(0,0,0,0.08)" : "none",
-      }
-    }, tab === "regular" ? "\ud83d\udcc5 \u041e\u0431\u044b\u0447\u043d\u044b\u0439 \u0434\u0435\u043d\u044c" : "\ud83d\udc75 \u0414\u0435\u043d\u044c \u0441 \u0431\u0430\u0431\u0443\u0448\u043a\u043e\u0439");
-  })
-),
-
-// View toggle
-e("div", { style: { display: "flex", justifyContent: "center", marginBottom: 18 } },
-  e("div", { style: { display: "inline-flex", background: "#fff", borderRadius: 10, padding: 3, boxShadow: "0 1px 4px rgba(0,0,0,0.06)" } },
-    ["simple", "detailed"].map(function(mode) {
-      return e("button", {
-        key: mode,
-        onClick: function() { setViewMode(mode); setExpandedIdx(null); },
-        style: {
-          padding: "7px 20px", border: "none", borderRadius: 8, cursor: "pointer",
-          fontSize: 12, fontWeight: 700, fontFamily: "inherit", transition: "all 0.2s",
-          background: viewMode === mode ? "#4C51BF" : "transparent",
-          color: viewMode === mode ? "#fff" : "#718096",
-        }
-      }, mode === "simple" ? "\u26a1 \u041a\u0440\u0430\u0442\u043a\u043e" : "\ud83d\udccb \u041f\u043e\u0434\u0440\u043e\u0431\u043d\u043e");
-    })
-  )
-),
-
-// Legend (detailed only)
-!isSimple ? e("div", { style: { display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 16, padding: "10px 12px", background: "#fff", borderRadius: 12, boxShadow: "0 1px 3px rgba(0,0,0,0.04)" } },
-  Object.entries(COLOR_MAP)
-    .filter(function(en) { return dayTab === "grandma" || en[0] !== "grandma"; })
-    .map(function(en) {
-      return e("div", { key: en[0], style: { display: "flex", alignItems: "center", gap: 4, fontSize: 10, color: "#4A5568" } },
-        e("div", { style: { width: 10, height: 10, borderRadius: 3, background: en[1].bg, border: "2px solid " + en[1].border } }),
-        en[1].label
-      );
-    })
-) : null,
-
-// Timeline
-isSimple ? renderSimple() : renderDetailed(),
-
-// Sleep
-renderSleep(),
-
-// Formula
-e("div", { style: { marginTop: 16, padding: 16, background: "#FFF5F5", borderRadius: 14, border: "1.5px solid #FED7D7" } },
-  e("h3", { style: { fontSize: 14, fontWeight: 800, color: "#9B2C2C", margin: "0 0 10px 0" } }, "\ud83c\udf7c \u041e\u0431\u044a\u0451\u043c \u0441\u043c\u0435\u0441\u0438 (1 \u0440\u0430\u0437/\u0434\u0435\u043d\u044c, \u043d\u043e\u0447\u043d\u043e\u0435 \u043a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435)"),
-  e("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 } },
-    formulaInfo.map(function(item) {
-      return e("div", { key: item[0], style: { padding: "6px 10px", background: "#fff", borderRadius: 8, display: "flex", justifyContent: "space-between", fontSize: 11 } },
-        e("span", { style: { color: "#718096" } }, item[0]),
-        e("span", { style: { fontWeight: 800, color: "#9B2C2C" } }, item[1])
-      );
-    })
-  )
-),
-
-// Rules
-e("div", { style: { marginTop: 16, padding: 16, background: "#EBF8FF", borderRadius: 14, border: "1.5px solid #BEE3F8", marginBottom: 20 } },
-  e("h3", { style: { fontSize: 14, fontWeight: 800, color: "#2A4365", margin: "0 0 8px 0" } }, "\u26a1 4 \u0436\u0435\u043b\u0435\u0437\u043d\u044b\u0445 \u043f\u0440\u0430\u0432\u0438\u043b\u0430"),
-  e("div", { style: { fontSize: 11, color: "#2C5282", lineHeight: 2 } },
-    e("div", null, e("strong", null, "1."), " \u041c\u0430\u043c\u0430 \u0441\u0446\u0435\u0436\u0438\u0432\u0430\u0435\u0442\u0441\u044f \u043f\u0435\u0440\u0435\u0434 \u0441\u043d\u043e\u043c (22:45). \u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c = \u043f\u043e\u0442\u0435\u0440\u044f\u0442\u044c \u043c\u043e\u043b\u043e\u043a\u043e."),
-    e("div", null, e("strong", null, "2."), " \u041a\u043e\u0440\u043c\u043b\u0435\u043d\u0438\u0435 \u0432 03:00 \u2014 \u0442\u043e\u043b\u044c\u043a\u043e \u0433\u0440\u0443\u0434\u044c\u044e. \u041f\u0438\u043a \u043f\u0440\u043e\u043b\u0430\u043a\u0442\u0438\u043d\u0430 \u043d\u043e\u0447\u044c\u044e."),
-    e("div", null, e("strong", null, "3."), " \u0421\u0447\u0438\u0442\u0430\u0439\u0442\u0435 \u043c\u043e\u043a\u0440\u044b\u0435 \u043f\u043e\u0434\u0433\u0443\u0437\u043d\u0438\u043a\u0438. 6+ \u0432 \u0441\u0443\u0442\u043a\u0438 = \u043c\u0430\u043b\u044b\u0448 \u0441\u044b\u0442. \u041c\u0435\u043d\u044c\u0448\u0435 = \u043a \u0432\u0440\u0430\u0447\u0443."),
-    e("div", null, e("strong", null, "4."), " \u041f\u0430\u043f\u0438\u043d\u0430 \u0441\u043c\u0435\u043d\u0430 13:00\u201315:00 \u2014 \u0441\u0432\u044f\u0449\u0435\u043d\u043d\u0430. \u041e\u0442 \u043d\u0435\u0451 \u0437\u0430\u0432\u0438\u0441\u0438\u0442 \u043c\u0430\u043c\u0438\u043d \u0434\u043d\u0435\u0432\u043d\u043e\u0439 \u0441\u043e\u043d.")
-  )
-)
-```
-
-);
-}
-
-ReactDOM.render(e(Schedule), document.getElementById(“root”));
-</script>
-
+ReactDOM.render(e(Schedule), document.getElementById("root"));
+    </script>
 </body>
 </html>
