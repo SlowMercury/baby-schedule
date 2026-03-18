@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Расписание новорождённого — 7-й день</title>
+    <meta name="description" content="Расписание кормлений и сна для новорождённого на 7-й день жизни">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Расписание">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Nunito', 'Segoe UI', sans-serif; background: linear-gradient(165deg, #F7F8FC 0%, #EEF1F8 50%, #F0EBF4 100%); min-height: 100vh; }
+        #root { max-width: 520px; margin: 0 auto; padding: 20px 12px; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script>
+const e = React.createElement;
+const { useState } = React;
+
+const SCHEDULE_DATA = {
+  regular: {
+    label: "Обычный день",
+    blocks: [
+      { time: "23:00", who: "mom", icon: "\u{1F931}", action: "Последнее кормление грудью + сцеживание", note: "Сцеженное молоко убрать в холодильник на завтра" },
+      { time: "23:15", who: "mom_sleep", icon: "\u{1F634}", action: "Мама спит (начало блока 1)", note: "Беруши, по возможности — отдельная комната" },
+      { time: "23:15", who: "dad", icon: "\u{1F476}", action: "Папа держит / укачивает малыша", note: "Кожа к коже, пеленание, покачивание" },
+      { time: "01:00", who: "dad", icon: "\u{1F37C}", action: "Папа даёт СМЕСЬ — 50–60 мл", note: "Медленное кормление, соска «0», вертикальное положение. Хорошо срыгнуть." },
+      { time: "01:30", who: "dad_sleep", icon: "\u{1F634}", action: "Папа ложится спать", note: "После смеси малыш обычно спит 1,5–2 часа" },
+      { time: "01:30", who: "mom_sleep", icon: "\u{1F634}", action: "Мама продолжает спать", note: "~4 часа непрерывно — самый глубокий отдых" },
+      { time: "03:00", who: "mom", icon: "\u{1F931}", action: "Мама просыпается → кормит грудью", note: "Пик пролактина — это кормление защищает выработку молока" },
+      { time: "03:30", who: "mom_sleep", icon: "\u{1F4A4}", action: "Мама дремлет рядом с малышом", note: "Лёгкий сон между кормлениями" },
+      { time: "04:30", who: "mom", icon: "\u{1F931}", action: "Кормление грудью", note: "" },
+      { time: "05:00", who: "mom_sleep", icon: "\u{1F4A4}", action: "Мама дремлет", note: "" },
+      { time: "06:00", who: "mom", icon: "\u{1F931}", action: "Кормление грудью", note: "" },
+      { time: "06:30", who: "mom_sleep", icon: "\u{1F4A4}", action: "Мама дремлет", note: "" },
+      { time: "07:30", who: "mom", icon: "\u{1F931}", action: "Кормление грудью", note: "" },
+      { time: "08:30", who: "dad", icon: "\u{1F9D1}", action: "Папа встаёт → забирает малыша", note: "Подгузник, подержать, походить" },
+      { time: "08:30", who: "mom_self", icon: "\u{1F6BF}", action: "Мама: душ + нормальный завтрак", note: "45 минут полностью без ребёнка. Не обсуждается." },
+      { time: "09:00", who: "dad", icon: "\u{1F9D1}", action: "Папа держит малыша / готовится к работе", note: "" },
+      { time: "09:15", who: "mom", icon: "\u{1F931}", action: "Кормление грудью по требованию", note: "" },
+      { time: "09:15", who: "dad_work", icon: "\u{1F4BB}", action: "Папа работает из дома", note: "Помочь с подгузниками/срыгиванием между задачами" },
+      { time: "10:00", who: "mom", icon: "\u{1F931}", action: "Кормление по требованию (~каждые 1–1,5 ч)", note: "Мама отдыхает между кормлениями, перекусывает, пьёт воду" },
+      { time: "13:00", who: "dad", icon: "\u{1F9D1}", action: "Папа: обеденный перерыв → забирает малыша", note: "" },
+      { time: "13:00", who: "mom_self", icon: "\u{1F37D}\uFE0F", action: "Мама нормально обедает", note: "Калорийная еда. Ей нужно +500 ккал/день" },
+      { time: "13:30", who: "mom_sleep", icon: "\u{1F634}", action: "Мама: ДНЕВНОЙ СОН — 1,5 часа", note: "Папа с малышом. Работа подождёт 90 минут." },
+      { time: "13:30", who: "dad", icon: "\u{1F476}", action: "Папа: дежурство с малышом (обед + перерыв)", note: "Качать, ходить, кожа к коже, соска/мизинец" },
+      { time: "15:00", who: "mom", icon: "\u{1F931}", action: "Мама просыпается → кормит грудью", note: "" },
+      { time: "15:00", who: "dad_work", icon: "\u{1F4BB}", action: "Папа работает из дома", note: "" },
+      { time: "15:30", who: "mom", icon: "\u{1F931}", action: "Кормление по требованию", note: "" },
+      { time: "18:00", who: "dad", icon: "\u{1F9D1}", action: "Папа закончил работу → забирает малыша", note: "" },
+      { time: "18:00", who: "mom_self", icon: "\u{1F37D}\uFE0F", action: "Мама ужинает", note: "" },
+      { time: "18:30", who: "dad_self", icon: "\u{1F37D}\uFE0F", action: "Папа ужинает", note: "Мама держит малыша" },
+      { time: "19:00", who: "mom", icon: "\u{1F931}", action: "Вечернее кластерное кормление", note: "Кормления каждые 30–60 мин. Это нормально и строит запас молока." },
+      { time: "19:00", who: "dad", icon: "\u{1F9D1}", action: "Папа: подгузники, срыгивания, вода и перекусы для мамы", note: "Поддерживать маму едой и водой во время марафона" },
+      { time: "22:30", who: "mom_self", icon: "\u{1F6BF}", action: "Мама: быстрый душ", note: "" },
+      { time: "22:45", who: "mom", icon: "\u{1F931}", action: "Последнее кормление + сцеживание", note: "Цикл начинается заново" },
+    ],
+    sleepTotals: {
+      mom: { solid: "4 ч (23:15–03:00)", dozing: "3–3,5 ч (между кормлениями)", nap: "1,5 ч (дневной сон)", total: "8,5–9 ч" },
+      dad: { solid: "7 ч (01:30–08:30)", total: "7 ч" },
+    }
+  },
+  grandma: {
+    label: "День с бабушкой",
+    blocks: [
+      { time: "23:00", who: "mom", icon: "\u{1F931}", action: "Последнее кормление + сцеживание", note: "Сцеженное молоко убрать в холодильник" },
+      { time: "23:15", who: "mom_sleep", icon: "\u{1F634}", action: "Мама спит (начало блока 1)", note: "" },
+      { time: "23:15", who: "dad", icon: "\u{1F476}", action: "Папа держит / укачивает малыша", note: "" },
+      { time: "01:00", who: "dad", icon: "\u{1F37C}", action: "Папа даёт СМЕСЬ — 50–60 мл", note: "Единственное кормление смесью за день" },
+      { time: "01:30", who: "dad_sleep", icon: "\u{1F634}", action: "Папа ложится спать", note: "" },
+      { time: "01:30", who: "mom_sleep", icon: "\u{1F634}", action: "Мама продолжает спать", note: "" },
+      { time: "03:00", who: "mom", icon: "\u{1F931}", action: "Мама просыпается → кормит грудью", note: "Окно пика пролактина" },
+      { time: "03:30", who: "mom_sleep", icon: "\u{1F4A4}", action: "Мама дремлет", note: "" },
+      { time: "04:30", who: "mom", icon: "\u{1F931}", action: "Кормление грудью", note: "" },
+      { time: "05:00", who: "mom_sleep", icon: "\u{1F4A4}", action: "Мама дремлет", note: "" },
+      { time: "06:00", who: "mom", icon: "\u{1F931}", action: "Кормление грудью", note: "" },
+      { time: "06:30", who: "mom_sleep", icon: "\u{1F4A4}", action: "Мама дремлет", note: "" },
+      { time: "07:30", who: "mom", icon: "\u{1F931}", action: "Кормление грудью", note: "" },
+      { time: "08:30", who: "dad", icon: "\u{1F9D1}", action: "Папа встаёт → забирает малыша", note: "" },
+      { time: "08:30", who: "mom_self", icon: "\u{1F6BF}", action: "Мама: душ + завтрак", note: "45 минут без ребёнка" },
+      { time: "09:00", who: "grandma", icon: "\u{1F475}", action: "Бабушка приходит → забирает малыша", note: "Папа передаёт дела бабушке, начинает работу" },
+      { time: "09:15", who: "mom", icon: "\u{1F931}", action: "Кормление грудью", note: "" },
+      { time: "09:30", who: "grandma", icon: "\u{1F475}", action: "Бабушка с малышом между кормлениями", note: "Подгузники, укачивание — приносит малыша маме на кормление" },
+      { time: "09:30", who: "dad_work", icon: "\u{1F4BB}", action: "Папа работает (без перерывов)", note: "Бабушка берёт на себя малыша" },
+      { time: "09:30", who: "mom", icon: "\u{1F931}", action: "Кормление по требованию (~каждые 1,5 ч)", note: "Бабушка приносит малыша, мама только кормит и отдыхает" },
+      { time: "13:00", who: "mom_self", icon: "\u{1F37D}\uFE0F", action: "Мама обедает", note: "Малыш у бабушки" },
+      { time: "13:30", who: "mom_sleep", icon: "\u{1F634}", action: "Мама: ДОЛГИЙ СОН — 2,5 часа", note: "Бабушка справляется сама, будит маму только на кормление" },
+      { time: "13:30", who: "grandma", icon: "\u{1F475}", action: "Бабушка: малыш + 1 кормление у мамы ~15:00", note: "Разбудить маму в ~15:00 на одно кормление, потом дать доспать" },
+      { time: "13:00", who: "dad_work", icon: "\u{1F4BB}", action: "Папа работает (без перерывов)", note: "" },
+      { time: "16:00", who: "mom", icon: "\u{1F931}", action: "Мама встала → кормление по требованию", note: "" },
+      { time: "17:00", who: "grandma", icon: "\u{1F475}", action: "Бабушка уходит", note: "" },
+      { time: "17:00", who: "dad", icon: "\u{1F9D1}", action: "Папа закончил работу → забирает малыша", note: "" },
+      { time: "17:00", who: "mom_self", icon: "\u2615", action: "Мама: свободное время / отдых / поесть", note: "Час на то, чтобы побыть человеком" },
+      { time: "18:00", who: "dad_self", icon: "\u{1F37D}\uFE0F", action: "Папа ужинает", note: "" },
+      { time: "18:30", who: "mom", icon: "\u{1F931}", action: "Вечернее кластерное кормление", note: "" },
+      { time: "18:30", who: "dad", icon: "\u{1F9D1}", action: "Папа: помогает маме (подгузники, срыгивания, перекусы)", note: "" },
+      { time: "22:30", who: "mom_self", icon: "\u{1F6BF}", action: "Мама: быстрый душ", note: "" },
+      { time: "22:45", who: "mom", icon: "\u{1F931}", action: "Последнее кормление + сцеживание", note: "Цикл начинается заново" },
+    ],
+    sleepTotals: {
+      mom: { solid: "4 ч (23:15–03:00)", dozing: "3–3,5 ч", nap: "2,5 ч (дневной!)", total: "9,5–10 ч" },
+      dad: { solid: "7 ч (01:30–08:30)", total: "7 ч" },
+    }
+  }
+};
+
+const COLOR_MAP = {
+  mom:       { bg: "#FDE8E8", border: "#E53E3E", text: "#9B2C2C", label: "Мама: кормление" },
+  mom_sleep: { bg: "#C3DAFE", border: "#4C51BF", text: "#2A4365", label: "Мама: сон" },
+  mom_self:  { bg: "#FEFCBF", border: "#D69E2E", text: "#744210", label: "Мама: для себя" },
+  dad:       { bg: "#C6F6D5", border: "#38A169", text: "#22543D", label: "Папа: с малышом" },
+  dad_sleep: { bg: "#BEE3F8", border: "#3182CE", text: "#2A4365", label: "Папа: сон" },
+  dad_work:  { bg: "#E9D8FD", border: "#805AD5", text: "#44337A", label: "Папа: работа" },
+  dad_self:  { bg: "#FEFCBF", border: "#D69E2E", text: "#744210", label: "Папа: для себя" },
+  grandma:   { bg: "#FEEBC8", border: "#DD6B20", text: "#7B341E", label: "Бабушка" },
+};
+
+const formulaInfo = [
+  ["День 7", "50–60 мл"],
+  ["День 10", "60–70 мл"],
+  ["День 14", "70–80 мл"],
+  ["Неделя 3–4", "80–90 мл"],
+];
+
+function Schedule() {
+  const [activeTab, setActiveTab] = useState("regular");
+  const [expandedIdx, setExpandedIdx] = useState(null);
+  const data = SCHEDULE_DATA[activeTab];
+
+  const s = (obj) => obj; // style passthrough
+
+  return e("div", null,
+    // Header
+    e("div", { style: s({ textAlign: "center", marginBottom: 20 }) },
+      e("div", { style: s({ fontSize: 32, marginBottom: 4 }) }, "\u{1F476}"),
+      e("h1", { style: s({ fontSize: 22, fontWeight: 800, color: "#2D3748", margin: "0 0 4px 0", letterSpacing: "-0.5px" }) }, "Расписание — 7-й день"),
+      e("p", { style: s({ fontSize: 13, color: "#718096", margin: 0 }) }, "Малыш 4680 г · 1 кормление смесью/день · Папа на удалёнке")
+    ),
+
+    // Tabs
+    e("div", { style: s({ display: "flex", gap: 8, marginBottom: 20, padding: "4px", background: "#E2E8F0", borderRadius: 14 }) },
+      ["regular", "grandma"].map(function(tab) {
+        return e("button", {
+          key: tab,
+          onClick: function() { setActiveTab(tab); setExpandedIdx(null); },
+          style: s({
+            flex: 1, padding: "10px 8px", border: "none", borderRadius: 11, cursor: "pointer",
+            fontSize: 13, fontWeight: 700, fontFamily: "inherit", transition: "all 0.2s",
+            background: activeTab === tab ? "#fff" : "transparent",
+            color: activeTab === tab ? "#2D3748" : "#718096",
+            boxShadow: activeTab === tab ? "0 2px 8px rgba(0,0,0,0.08)" : "none",
+          })
+        }, tab === "regular" ? "\u{1F4C5} Обычный день" : "\u{1F475} День с бабушкой");
+      })
+    ),
+
+    // Legend
+    e("div", { style: s({ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 16, padding: "10px 12px", background: "#fff", borderRadius: 12, boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }) },
+      Object.entries(COLOR_MAP)
+        .filter(function(entry) { return activeTab === "grandma" || entry[0] !== "grandma"; })
+        .map(function(entry) {
+          var key = entry[0], val = entry[1];
+          return e("div", { key: key, style: s({ display: "flex", alignItems: "center", gap: 4, fontSize: 10, color: "#4A5568" }) },
+            e("div", { style: s({ width: 10, height: 10, borderRadius: 3, background: val.bg, border: "2px solid " + val.border }) }),
+            val.label
+          );
+        })
+    ),
+
+    // Timeline
+    e("div", { style: s({ position: "relative", paddingLeft: 52 }) },
+      e("div", { style: s({ position: "absolute", left: 39, top: 0, bottom: 0, width: 2, background: "linear-gradient(to bottom, #CBD5E0, #A0AEC0, #CBD5E0)" }) }),
+      data.blocks.map(function(block, i) {
+        var colors = COLOR_MAP[block.who];
+        var isFormula = block.icon === "\u{1F37C}";
+        var isExpanded = expandedIdx === i;
+
+        return e("div", {
+          key: i,
+          onClick: function() { setExpandedIdx(isExpanded ? null : i); },
+          style: s({ position: "relative", marginBottom: 6, cursor: block.note ? "pointer" : "default" })
+        },
+          // Dot
+          e("div", { style: s({
+            position: "absolute", left: -20, top: 10,
+            width: isFormula ? 14 : 10, height: isFormula ? 14 : 10,
+            borderRadius: "50%", background: colors.border,
+            border: "2px solid " + (isFormula ? "#E53E3E" : "#fff"),
+            boxShadow: isFormula ? "0 0 0 3px #FEB2B2" : "0 1px 2px rgba(0,0,0,0.1)",
+            marginLeft: isFormula ? -2 : 0, marginTop: isFormula ? -2 : 0, zIndex: 2,
+          }) }),
+          // Time
+          e("div", { style: s({ position: "absolute", left: -55, top: 8, fontSize: 10, fontWeight: 700, color: "#718096", width: 38, textAlign: "right" }) }, block.time),
+          // Card
+          e("div", { style: s({
+            marginLeft: 10, padding: "8px 12px",
+            background: isFormula ? "linear-gradient(135deg, #FFF5F5 0%, #FED7D7 100%)" : colors.bg,
+            border: "1.5px solid " + (isFormula ? "#FC8181" : colors.border) + "40",
+            borderLeft: "4px solid " + colors.border,
+            borderRadius: 10, transition: "all 0.15s",
+            boxShadow: isFormula ? "0 2px 8px rgba(229,62,62,0.15)" : "none",
+          }) },
+            e("div", { style: s({ display: "flex", alignItems: "center", gap: 6 }) },
+              e("span", { style: s({ fontSize: 14 }) }, block.icon),
+              e("span", { style: s({ fontSize: 12, fontWeight: isFormula ? 800 : 600, color: colors.text, flex: 1 }) }, block.action),
+              block.note ? e("span", { style: s({ fontSize: 10, color: "#A0AEC0", transform: isExpanded ? "rotate(180deg)" : "none", transition: "transform 0.2s", display: "inline-block" }) }, "\u25BC") : null
+            ),
+            isExpanded && block.note ? e("div", { style: s({ marginTop: 6, paddingTop: 6, borderTop: "1px dashed " + colors.border + "40", fontSize: 11, color: "#4A5568", lineHeight: 1.5 }) }, block.note) : null
+          )
+        );
+      })
+    ),
+
+    // Sleep totals
+    e("div", { style: s({ marginTop: 24, padding: 16, background: "#fff", borderRadius: 14, boxShadow: "0 2px 10px rgba(0,0,0,0.06)" }) },
+      e("h3", { style: s({ fontSize: 14, fontWeight: 800, color: "#2D3748", margin: "0 0 12px 0" }) }, "\u{1F4A4} Итого сон"),
+      e("div", { style: s({ display: "flex", gap: 12 }) },
+        e("div", { style: s({ flex: 1, padding: 10, background: "#F7FAFC", borderRadius: 10 }) },
+          e("div", { style: s({ fontSize: 11, fontWeight: 700, color: "#E53E3E", marginBottom: 6 }) }, "МАМА"),
+          e("div", { style: s({ fontSize: 10, color: "#4A5568", lineHeight: 1.8 }) },
+            e("div", null, "\u{1F319} Глубокий: " + data.sleepTotals.mom.solid),
+            e("div", null, "\u{1F4A4} Дрёма: " + data.sleepTotals.mom.dozing),
+            e("div", null, "\u{1F634} Дневной: " + data.sleepTotals.mom.nap),
+            e("div", { style: s({ fontWeight: 800, color: "#2D3748", marginTop: 4, fontSize: 13 }) }, "Всего: " + data.sleepTotals.mom.total)
+          )
+        ),
+        e("div", { style: s({ flex: 1, padding: 10, background: "#F7FAFC", borderRadius: 10 }) },
+          e("div", { style: s({ fontSize: 11, fontWeight: 700, color: "#38A169", marginBottom: 6 }) }, "ПАПА"),
+          e("div", { style: s({ fontSize: 10, color: "#4A5568", lineHeight: 1.8 }) },
+            e("div", null, "\u{1F319} Глубокий: " + data.sleepTotals.dad.solid),
+            e("div", { style: s({ fontWeight: 800, color: "#2D3748", marginTop: 4, fontSize: 13 }) }, "Всего: " + data.sleepTotals.dad.total)
+          )
+        )
+      )
+    ),
+
+    // Formula reference
+    e("div", { style: s({ marginTop: 16, padding: 16, background: "#FFF5F5", borderRadius: 14, border: "1.5px solid #FED7D7" }) },
+      e("h3", { style: s({ fontSize: 14, fontWeight: 800, color: "#9B2C2C", margin: "0 0 10px 0" }) }, "\u{1F37C} Объём смеси (1 раз/день, ночное кормление)"),
+      e("div", { style: s({ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }) },
+        formulaInfo.map(function(item) {
+          return e("div", { key: item[0], style: s({ padding: "6px 10px", background: "#fff", borderRadius: 8, display: "flex", justifyContent: "space-between", fontSize: 11 }) },
+            e("span", { style: s({ color: "#718096" }) }, item[0]),
+            e("span", { style: s({ fontWeight: 800, color: "#9B2C2C" }) }, item[1])
+          );
+        })
+      )
+    ),
+
+    // Rules
+    e("div", { style: s({ marginTop: 16, padding: 16, background: "#EBF8FF", borderRadius: 14, border: "1.5px solid #BEE3F8", marginBottom: 20 }) },
+      e("h3", { style: s({ fontSize: 14, fontWeight: 800, color: "#2A4365", margin: "0 0 8px 0" }) }, "\u26A1 4 железных правила"),
+      e("div", { style: s({ fontSize: 11, color: "#2C5282", lineHeight: 2 }) },
+        e("div", null, e("strong", null, "1."), " Мама сцеживается перед сном (22:45). Пропустить = потерять молоко."),
+        e("div", null, e("strong", null, "2."), " Кормление в 03:00 — только грудью. Пик пролактина ночью."),
+        e("div", null, e("strong", null, "3."), " Считайте мокрые подгузники. 6+ в сутки = малыш сыт. Меньше = к врачу."),
+        e("div", null, e("strong", null, "4."), " Папина смена 13:00–15:00 — священна. От неё зависит мамин дневной сон.")
+      )
+    )
+  );
+}
+
+ReactDOM.render(e(Schedule), document.getElementById("root"));
+    </script>
+</body>
+</html>
